@@ -1,0 +1,19 @@
+// Breakpoints
+// ======================================================
+$breakpoints: (
+  huge: 1400 + 294,
+  desktop: 1400,
+  small-desktop: 1200,
+  tablet: 1000,
+  phablet: 700,
+  mobile: 500,
+  mobile-s: 320
+);
+
+@mixin break ($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  $size-in-pixel: $size * 1px;
+  @media (max-width: $size-in-pixel) {
+    @content;
+  }
+}
