@@ -45,7 +45,7 @@
         <nav class="menu">
           <ul>
             <li><a href="#legalkoholszint-tablazat" @click="pushHistoryAndScroll('legalkoholszint-tablazat')">alkoholszint táblázat</a></li>
-            <li><a target="_blank" href="https://drkakukzoltan.hu">egyéb bűncselekmények</a></li>
+            <li><a target="_blank" href="https://drkakukzoltan.hu" rel="noopener">egyéb bűncselekmények</a></li>
             <li>kapcsolat</li>
           </ul>
         </nav>
