@@ -69,7 +69,9 @@
       :selected-question="selectedQuestion"
     />
 
-    <contact-map />
+    <ClientOnly>
+      <contact-map />
+    </ClientOnly>
     
     <ittas-footer />
 

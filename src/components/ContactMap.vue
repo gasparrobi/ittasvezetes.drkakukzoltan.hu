@@ -1,16 +1,14 @@
 <template>
   <div class="section">
-    <ClientOnly>
-      <gmap-map
-        :center="center"
-        :zoom="16"
-        style="width:100%;  height: 400px;"
-      >
-        <gmap-marker
-          :position="center"
-        ></gmap-marker>
-      </gmap-map>
-    </ClientOnly>
+    <gmap-map
+      :center="center"
+      :zoom="16"
+      style="width:100%;  height: 400px;"
+    >
+      <gmap-marker
+        :position="center"
+      ></gmap-marker>
+    </gmap-map>
   </div>
 </template>
 <script>
