@@ -1,14 +1,18 @@
 <template>
-    <section
-      :id="content.slug"
-      class="content"
-    >
-      <h2
-        class="title"
-        @click="share"
-      >{{ content.title }}</h2>
-      <p>{{ content.content }}</p>
-    </section>
+  <div class="section">
+    <div class="section-inner">
+      <section
+        :id="content.slug"
+        class="content"
+      >
+        <h2
+          class="title"
+          @click="share"
+        >{{ content.title }}</h2>
+        <p>{{ content.content }}</p>
+      </section>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -56,10 +60,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.content {
-  margin: 25px 0;
-}
-
 .title {
   color: #2C3E50;
   text-transform: uppercase;

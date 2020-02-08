@@ -16,7 +16,7 @@
     </p> -->
 
     <div class="select-wrapper">
-      <select
+     <!--  <select
         name="gyakran-ismetelt-kerdesek"
         id="gyakra-ismetelt-kerdesek"
         v-model="selectedQuestion"
@@ -28,7 +28,7 @@
           :value="item.slug">
           {{ item.title }}
         </option>
-      </select>
+      </select> -->
     </div>
 
     <div class="section section-topnav">
@@ -61,17 +61,35 @@
     <introduction1 />
 
     <!-- WHY CHOOSE US -->
-    <div class="section section-first">
-      <div class="section-inner">
-        <ittas-content 
-          v-for="(item, index) in ittasContent"
-          :key="index"
-          :content="item"
-          :selected-question="selectedQuestion"
-        />
-      </div>
-    </div>
+    <component 
+      v-for="(item, index) in ittasContent"
+      :key="index"
+      :is="item.component"
+      :content="item"
+      :selected-question="selectedQuestion"
+    />
 
+    <contact-map />
+    
+    <ittas-footer />
+
+<!--     <div class="section">
+     
+      <div data-address="121 King Street, Melbourne Victoria 3000 Australia" data-popupstring-id="#popupstring1" class="map-canvas autoload-map"
+        data-mapstyle="default" data-height="400" data-latlng="47.511425, 19.052229" data-title="sample title"
+        data-zoom="16" data-marker="/static/images/map-marker.png ">
+      </div>
+      <div class="map-popupstring hidden" id="popupstring1">
+        <div class="text-center">
+          <h3>Dr. Kakuk Zoltán Dániel ügyvéd</h3>
+          <p>1055 Budapest, Szent István körút 17. 3. emelet 4. ajtó</p>
+        </div>
+      </div>
+
+      <script src="https://maps.google.com/maps/api/js?key=AIzaSyAzf9wE8euXLL9aiSUEBSST1hvufVb_GvU"></script>
+      <script src="/static/js/google-map-init.js "></script>
+    </div>
+ -->
   </Layout>
 </template>
 
@@ -82,7 +100,8 @@
         node {
           title
           content,
-          slug
+          slug,
+          type
         }
       }
     }
@@ -92,6 +111,10 @@
 <script>
 import IttasContent from '../components/IttasContent';
 import Introduction1 from '../components/Introduction1';
+import CallToAction from '../components/CallToAction';
+import AlcoholTable from '../components/AlcoholTable';
+import ContactMap from '../components/ContactMap';
+import IttasFooter from '../components/IttasFooter';
 import { scrollTo } from '../utils/index';
 
 export default {
@@ -103,7 +126,11 @@ export default {
 
   components: {
     IttasContent,
-    Introduction1
+    Introduction1,
+    CallToAction,
+    AlcoholTable,
+    ContactMap,
+    IttasFooter
   },
 
   data () {
@@ -122,11 +149,13 @@ export default {
   computed: {
     ittasContent () {
       return this.$page.content.edges.map(edge => {
-        const { title, content, slug } = edge.node;
+        const { title, content, slug, type } = edge.node;
         return {
           title,
           content,
-          slug
+          slug,
+          type,
+          component: this.getComponent(type)
         }
       }).reverse();
     },
@@ -143,12 +172,29 @@ export default {
   methods: {
     scrollToItem (id) {
       scrollTo(`#${id}`, null, 300, null, -100);
+    },
+
+    getComponent (type) {
+      switch (type) {
+        case 'content':
+          return 'ittas-content'
+          break;
+        case 'callToAction':
+          return 'call-to-action'
+          break;
+        case 'alkoholszint':
+          return 'alcohol-table'
+          break;
+        default:
+          return 'template'
+          break;
+      }
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .home-links a {
   margin-right: 1rem;
 }
@@ -173,6 +219,12 @@ export default {
     @include break(mobile) {
       padding: 20px;
     }
+  }
+
+  &-red {
+    min-height: 210px;
+    background-color: #C54552;
+    color: #fff;
   }
 
   &-topnav {
@@ -353,24 +405,37 @@ export default {
 
 .select-wrapper {
   width: 100%;
-    max-width: 100vw;
-    background: #fff;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 20px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-  }
+  max-width: 100vw;
+  background: #fff;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
 
-  select {
-    max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+select {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cta-title {
+  text-transform: uppercase;
+  font-size: 32px;
+  line-height: 39px;
+  margin-bottom: 30px;
+}
 </style>

@@ -10,7 +10,8 @@
     "@gridsome/source-airtable": "^0.1.4",
     "gridsome": "^0.7.0",
     "typeface-montserrat": "0.0.75",
-    "typeface-open-sans": "0.0.75"
+    "typeface-open-sans": "0.0.75",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "gridsome-plugin-tailwindcss": "^2.2.32",
