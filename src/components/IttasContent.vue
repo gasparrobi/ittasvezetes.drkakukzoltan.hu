@@ -3,7 +3,10 @@
       :id="content.slug"
       class="content"
     >
-      <h2 class="title">{{ content.title }}</h2>
+      <h2
+        class="title"
+        @click="share"
+      >{{ content.title }}</h2>
       <p>{{ content.content }}</p>
     </section>
 </template>
@@ -36,6 +39,18 @@ export default {
       setTimeout(() => {
         this.$el.classList.add('content--animate');
       }, 1000);
+    },
+
+    share () {
+      if (navigator.share) {
+        navigator.share({
+          title: this.content.title,
+          url: window.location.hash
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+      }
     }
   }
 }

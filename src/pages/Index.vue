@@ -35,14 +35,13 @@
       <div class="section-inner">
         <a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a>
         <a href="tel:+36304322665">+36 30 432 2665</a>
-        <a href="#mire-szamithatok-buncselekmeny-vagy-szabalysertes">tototo</a>
       </div>
     </div>
     
     <!-- HERO SECTION -->
     <div class="section section-hero">
       <div class="navigation">
-        <div class="logo"><span>ittasvezetes</span>.drkakukzoltan.hu</div>
+        <a href="/" class="logo"><span>ittasvezetes</span>.drkakukzoltan.hu</a>
         <nav class="menu">
           <ul>
             <li>alkoholszint táblázat</li>
@@ -58,6 +57,8 @@
         <p class="contact-secondary">vagy keressen a <a href="tel:+36304322665">+36 30 432 2665</a> számon</p>
       </div>
     </div>
+
+    <introduction1 />
 
     <!-- WHY CHOOSE US -->
     <div class="section section-first">
@@ -90,6 +91,7 @@
 
 <script>
 import IttasContent from '../components/IttasContent';
+import Introduction1 from '../components/Introduction1';
 import { scrollTo } from '../utils/index';
 
 export default {
@@ -100,7 +102,8 @@ export default {
   },
 
   components: {
-    IttasContent
+    IttasContent,
+    Introduction1
   },
 
   data () {
@@ -130,6 +133,7 @@ export default {
   },
 
   mounted () {
+    navigator.clipboard.writeText('hello');
     if (this.$route.hash) {
       this.selectedQuestion = this.$route.hash.replace('#', '');
       this.scrollToItem(this.selectedQuestion);
