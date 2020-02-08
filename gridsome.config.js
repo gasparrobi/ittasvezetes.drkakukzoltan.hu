@@ -39,7 +39,9 @@ module.exports = {
         baseId: process.env.AIRTABLE_BASE_ID, // required
         tableName: process.env.AIRTABLE_TABLE_NAME, // required
         typeName: process.env.AIRTABLE_TYPE_NAME, // required
-        select: {}, // optional
+        select: {
+          view: 'Grid view'
+        }, // optional
       },
     },
   ],

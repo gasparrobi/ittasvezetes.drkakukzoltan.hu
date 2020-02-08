@@ -15,10 +15,27 @@
       <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
     </p> -->
 
+    <div class="select-wrapper">
+      <select
+        name="gyakran-ismetelt-kerdesek"
+        id="gyakra-ismetelt-kerdesek"
+        v-model="selectedQuestion"
+      >
+        <option disabled value="">gyakran ismételt kérdések</option>
+        <option 
+          v-for="item in ittasContent"
+          :key="item.slug"
+          :value="item.slug">
+          {{ item.title }}
+        </option>
+      </select>
+    </div>
+
     <div class="section section-topnav">
       <div class="section-inner">
         <a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a>
         <a href="tel:+36304322665">+36 30 432 2665</a>
+        <a href="#mire-szamithatok-buncselekmeny-vagy-szabalysertes">tototo</a>
       </div>
     </div>
     
@@ -49,6 +66,7 @@
           v-for="(item, index) in ittasContent"
           :key="index"
           :content="item"
+          :selected-question="selectedQuestion"
         />
       </div>
     </div>
@@ -62,7 +80,8 @@
       edges {
         node {
           title
-          content
+          content,
+          slug
         }
       }
     }
@@ -71,6 +90,7 @@
 
 <script>
 import IttasContent from '../components/IttasContent';
+import { scrollTo } from '../utils/index';
 
 export default {
   name: 'index',
@@ -83,14 +103,42 @@ export default {
     IttasContent
   },
 
+  data () {
+    return {
+      selectedQuestion: ''
+    }
+  },
+
+  watch: {
+    selectedQuestion() {
+      this.$router.history.push(`/#${this.selectedQuestion}`);
+      this.scrollToItem(this.selectedQuestion);
+    }
+  },
+
   computed: {
     ittasContent () {
       return this.$page.content.edges.map(edge => {
+        const { title, content, slug } = edge.node;
         return {
-          title: edge.node.title,
-          content: edge.node.content
+          title,
+          content,
+          slug
         }
-      })
+      }).reverse();
+    },
+  },
+
+  mounted () {
+    if (this.$route.hash) {
+      this.selectedQuestion = this.$route.hash.replace('#', '');
+      this.scrollToItem(this.selectedQuestion);
+    }
+  },
+
+  methods: {
+    scrollToItem (id) {
+      scrollTo(`#${id}`, null, 300, null, -100);
     }
   }
 }
@@ -298,4 +346,26 @@ export default {
     }
   }
 }
+
+.select-wrapper {
+    width: 100%;
+    max-width: 100vw;
+    background: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  select {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 </style>
