@@ -3,7 +3,7 @@
     <div class="section-inner">
       <p>Ezt a honlapot <span>dr. Kakuk Zoltán Dániel</span> egyéni ügyvéd (Budapesti Ügyvédi Kamara, nyilvántartási szám: 01-052283) tartja fenn az ügyvédekre vonatkozó jogszabályok és belső szabályzatok szerint, melyek az ügyféljogokra vonatkozó tájékoztatással együtt a www.magyarugyvedikamara.hu honlapon találhatóak.</p>
       <p>Copyright ©{{ currentYear }} - <span>dr. Kakuk Zoltán Dániel</span> - Minden jog fenntartva!</p>
-      <p>Design & Development by <a target="_blank" href="https://www.linkedin.com/in/gasparrobi/">Robert Gaspar</a></p>
+      <small>Design & Development by <a target="_blank" href="https://www.linkedin.com/in/gasparrobi/">Robert Gaspar</a></small>
     </div>
   </footer>
 </template>
