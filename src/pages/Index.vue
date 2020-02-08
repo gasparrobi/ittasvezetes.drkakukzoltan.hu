@@ -348,8 +348,7 @@ export default {
 }
 
 .select-wrapper {
-    display: none;
-    width: 100%;
+  width: 100%;
     max-width: 100vw;
     background: #fff;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
@@ -361,6 +360,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    display: none;
   }
 
   select {
