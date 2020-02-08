@@ -44,8 +44,8 @@
         <a href="/" class="logo"><span>ittasvezetes</span>.drkakukzoltan.hu</a>
         <nav class="menu">
           <ul>
-            <li>alkoholszint táblázat</li>
-            <li>egyéb bűncselekmények</li>
+            <li><a href="#legalkoholszint-tablazat" @click="pushHistoryAndScroll('legalkoholszint-tablazat')">alkoholszint táblázat</a></li>
+            <li><a target="_blank" href="https://drkakukzoltan.hu">egyéb bűncselekmények</a></li>
             <li>kapcsolat</li>
           </ul>
         </nav>
@@ -172,6 +172,11 @@ export default {
   methods: {
     scrollToItem (id) {
       scrollTo(`#${id}`, null, 300, null, -100);
+    },
+
+    pushHistoryAndScroll (id) {
+      this.$router.history.push(`/#${id}`);
+      this.scrollToItem(id);
     },
 
     getComponent (type) {

@@ -17,7 +17,7 @@ export default function (Vue, { router, head, isClient }) {
     }
   });
 
-  router.options.scrollBehavior = function(to, from , savedPosition) {
+  /* router.options.scrollBehavior = function(to, from , savedPosition) {
     return false;
-  }
+  } */
 }
