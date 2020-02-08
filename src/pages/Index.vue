@@ -348,6 +348,7 @@ export default {
 }
 
 .select-wrapper {
+    display: none;
     width: 100%;
     max-width: 100vw;
     background: #fff;
