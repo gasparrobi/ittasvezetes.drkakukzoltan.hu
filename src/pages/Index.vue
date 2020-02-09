@@ -115,7 +115,6 @@ import IttasContent from '../components/IttasContent';
 import Introduction1 from '../components/Introduction1';
 import CallToAction from '../components/CallToAction';
 import AlcoholTable from '../components/AlcoholTable';
-import ContactMap from '../components/ContactMap';
 import IttasFooter from '../components/IttasFooter';
 import { scrollTo } from '../utils/index';
 
@@ -131,8 +130,8 @@ export default {
     Introduction1,
     CallToAction,
     AlcoholTable,
-    ContactMap,
-    IttasFooter
+    IttasFooter,
+    ContactMap: () => import('../components/ContactMap').then(ContactMap => ContactMap).catch(), 
   },
 
   data () {

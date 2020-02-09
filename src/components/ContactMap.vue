@@ -1,7 +1,5 @@
 <template>
-  <div class="section">
-    
-  </div>
+  <div class="section"></div>
 </template>
 <script>
 import gmapsInit from '../utils/gmaps';
@@ -27,13 +25,12 @@ export default {
           throw new Error(status);
         }
 
-        console.log(map);
-
         map.setCenter(this.center);
         map.setZoom(16);
         /* map.fitBounds(); */
       });
     } catch (error) {
+      console.log(111);
       console.error(error);
     }
   }
