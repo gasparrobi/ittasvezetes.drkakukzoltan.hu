@@ -23,7 +23,7 @@ export default {
   background: #4B4B4B;
 
   &-inner {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 10px;
     line-height: 12px;
     color: #B7B7B7;
@@ -32,6 +32,11 @@ export default {
 
     p {
       margin: 5px 0;
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 12px;
+      color: #B7B7B7;
+      text-align: center;
     }
 
     span {

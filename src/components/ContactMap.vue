@@ -17,18 +17,17 @@ export default {
   async mounted() {
     try {
       const google = await gmapsInit();
-      const geocoder = new google.maps.Geocoder();
       const map = new google.maps.Map(this.$el);
 
-      geocoder.geocode({ address: 'Austria' }, (results, status) => {
-        if (status !== 'OK' || !results[0]) {
-          throw new Error(status);
-        }
+      map.setCenter(this.center);
+      map.setZoom(16);
 
-        map.setCenter(this.center);
-        map.setZoom(16);
-        /* map.fitBounds(); */
+      var marker = new google.maps.Marker({
+        position: this.center,
+        map: map,
+        title: 'Hello World!'
       });
+
     } catch (error) {
       console.error(error);
     }
