@@ -17,7 +17,7 @@
       <div class="section-inner">
         <div class="empty empty--middle">
           <div class="block">
-            <img class="person" src="~../assets/images/drkakukzoltan.jpg" width="275" />
+            <img class="person" src="~../assets/images/drkakukzoltan.jpg" width="275" alt="Dr. Kakuk Zoltán Dániel - ittas vezetés ügyvéd" />
           </div>
         </div>
         <div class="cta-wrapper">
@@ -54,6 +54,10 @@ export default {
 .section-wrapper {
   overflow: hidden;
   padding: 80px 0;
+
+  @include break(phablet) {
+    display: none;
+  }
 }
 
 .section-inner {
@@ -176,6 +180,16 @@ export default {
   font-size: 32px;
   line-height: 39px;
   margin-bottom: 30px;
+
+  @include break(tablet) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  @include break(phablet) {
+    font-size: 22px;
+    line-height: 28px;
+  }
 }
 
 .title {
@@ -229,7 +243,8 @@ p {
   width: 100%;
 
   .box {
-    width: 215px;
+    flex: 1;
+    max-width: 215px;
     height: 135px;
     background-color: #fff;
     border: 5px solid #949494;
@@ -241,10 +256,31 @@ p {
     padding: 20px 10px;
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 26px;
     color: #2C3E50;
-    box-shadow: 0px 15px 22px 2px rgba(0,0,0,.1)
+    box-shadow: 0px 15px 22px 2px rgba(0,0,0,.1);
+
+    & ~.box {
+      margin-left: 10px;
+
+      @include break(tablet) {
+        margin-left: 5px;
+      }
+    }
+
+    @include break(tablet) {
+      font-size: 14px;
+    }
+
+    @include break(phablet) {
+      font-size: 12px;
+    }
+
+    @include break(mobile) {
+      display: none;
+    }
+    
   }
 }
 

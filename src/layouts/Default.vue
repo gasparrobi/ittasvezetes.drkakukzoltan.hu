@@ -57,7 +57,7 @@ body {
   }
 }
 
-h1 {
+h1.main-title {
   font-weight: 800;
   font-size: 32px;
   line-height: 40px;

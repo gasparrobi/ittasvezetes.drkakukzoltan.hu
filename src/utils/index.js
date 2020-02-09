@@ -45,7 +45,7 @@ export function scrollTo (to, callback, duration = 500, element, gap = 0) {
     const selector = to.replace(/^#/, '');
     to = document.getElementById(selector);
     if (!to) {
-      log.warn(`scrollTo: "${selector}" element id not found.`);
+      /* log.warn(`scrollTo: "${selector}" element id not found.`); */
       return;
     }
   }

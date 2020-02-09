@@ -5,10 +5,10 @@
         :id="content.slug"
         class="content"
       >
-        <h2
+        <h1
           class="title"
           @click="share"
-        >{{ content.title }}</h2>
+        >{{ content.title }}</h1>
         <p>{{ content.content }}</p>
       </section>
     </div>
@@ -60,6 +60,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.section-inner {
+  padding: 30px 40px;
+
+  @include break(mobile) {
+    padding: 20px;
+  }
+}
+
 .title {
   color: #2C3E50;
   text-transform: uppercase;
@@ -68,7 +76,7 @@ export default {
   line-height: 32px;
 
   @include break(mobile) {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 26px;
   }
 

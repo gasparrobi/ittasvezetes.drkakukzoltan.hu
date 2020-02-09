@@ -93,7 +93,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 15px 0;
+    margin: 10px 0;
 
     @include break(mobile) {
       margin: 10px 0;
@@ -102,8 +102,8 @@ export default {
     &-item {
       margin: 0 20px;
       font-weight: bold;
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 16px;
+      line-height: 20px;
       text-align: center;
 
       @include break(mobile) {
@@ -120,7 +120,7 @@ export default {
 
     .value {
       flex: 3;
-      padding: 20px;
+      padding: 15px;
       color: #fff;
       background: #C54552;
       border-radius: 5px;

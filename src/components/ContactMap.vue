@@ -30,7 +30,6 @@ export default {
         /* map.fitBounds(); */
       });
     } catch (error) {
-      console.log(111);
       console.error(error);
     }
   }

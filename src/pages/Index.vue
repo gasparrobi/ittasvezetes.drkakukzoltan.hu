@@ -59,6 +59,7 @@
     </div>
 
     <introduction1 />
+    <introduction-mobile />
 
     <!-- WHY CHOOSE US -->
     <component 
@@ -113,6 +114,7 @@
 <script>
 import IttasContent from '../components/IttasContent';
 import Introduction1 from '../components/Introduction1';
+import IntroductionMobile from '../components/IntroductionMobile';
 import CallToAction from '../components/CallToAction';
 import AlcoholTable from '../components/AlcoholTable';
 import IttasFooter from '../components/IttasFooter';
@@ -128,6 +130,7 @@ export default {
   components: {
     IttasContent,
     Introduction1,
+    IntroductionMobile,
     CallToAction,
     AlcoholTable,
     IttasFooter,
