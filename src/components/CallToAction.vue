@@ -2,15 +2,22 @@
   <div class="section section-red">
     <div class="section-inner">
       <div class="cta-wrapper">
-        <h2 class="cta-title">tudja meg most jogait és lehetőségeit! legyen tisztábaN a következményekkel!</h2>
-        <button type="button" class="button-cta">visszahívást kérek</button>
+        <h2 class="cta-title">{{ content.content }}</h2>
+        <button type="button" class="button-cta">{{ content.title }}</button>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'CallToAction'
+  name: 'CallToAction',
+
+  props: {
+    content: {
+      type: Object,
+      default: (()=>{})
+    }
+  }
 }
 </script>
 
