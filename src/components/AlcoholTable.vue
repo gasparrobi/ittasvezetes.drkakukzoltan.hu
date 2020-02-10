@@ -94,7 +94,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 0;
+    margin: 5px 0;
 
     @include break(mobile) {
       margin: 10px 0;
@@ -103,12 +103,12 @@ export default {
     &-item {
       margin: 0 20px;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 20px;
       text-align: center;
 
       @include break(mobile) {
-        font-size: 13px;
+        font-size: 12px;
         line-height: 16px;
         margin: 0 10px;
       }

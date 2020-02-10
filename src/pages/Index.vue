@@ -53,7 +53,7 @@
       <div class="section-inner">
         <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
         <h2 class="secondary-title">Kérjen visszahívást email-ben!<br>Még akár aznap visszahívom!</h2>
-        <button type="button" class="button-cta">visszahívást kérek</button>
+        <button type="button" class="button-cta">konzultációt kérek</button>
         <p class="contact-secondary">vagy keressen a <a href="tel:+36304322665">+36 30 432 2665</a> számon</p>
       </div>
     </div>
@@ -129,7 +129,7 @@ export default {
   name: 'index',
 
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'Ittas vezetés ügyvéd - dr. Kakuk Zoltán Dániel'
   },
 
   components: {

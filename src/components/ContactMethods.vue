@@ -29,6 +29,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.section {
+  margin: 60px 0;
+}
+
 .contact-wrapper {
   display: flex;
   align-items: center;

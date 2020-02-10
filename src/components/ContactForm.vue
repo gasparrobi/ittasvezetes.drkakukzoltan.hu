@@ -2,30 +2,63 @@
   <div class="section">
     <div class="section-inner">
 
-      <h1 class="title">Visszahíváshoz kérem töltse ki az alábbi adatlapot</h1>
+      <h1 class="title">Konzultációhoz kérem töltse ki az alábbi adatlapot</h1>
 
       <!-- <validation-provider rules="required" v-slot="{ errors }">
         <input v-model="value" name="myinput" type="text" />
         <span>{{ errors[0] }}</span>
       </validation-provider> -->
 
-      <ValidationObserver ref="observer">
+      <ValidationObserver ref="observer" v-slot="{ invalid, failed }">
         <form @submit.prevent="onSubmit">
           
-          <div class="section-wrapper">
-            <h2 class="form-title">E-mail cím:</h2>
+          <div class="section-horizontal">
+            <div class="section-wrapper">
+              <h2 class="form-title">Név:</h2>
 
-              <validation-provider class="touch-wrapper" mode="lazy" name="email" rules="required|email" v-slot="{ errors, failed }">
-                <input
-                  type="email"
-                  :class="[{ 'invalid': failed }]"
-                  v-model="email"
-                >
-                <span class="error-field">{{ errors[0] }}</span>
-              </validation-provider>
+                <validation-provider class="touch-wrapper" mode="lazy" name="name" rules="required" v-slot="{ errors, failed }">
+                  <input
+                    type="text"
+                    :class="[{ 'invalid': failed }]"
+                    v-model="name"
+                    placeholder="pl: Kovács Péter"
+                  >
+                  <span class="error-field">{{ errors[0] }}</span>
+                </validation-provider>
 
+            </div>
+
+            <div class="section-wrapper">
+              <h2 class="form-title">E-mail cím:</h2>
+
+                <validation-provider class="touch-wrapper" mode="lazy" name="email" v-slot="{ errors, failed }">
+                  <input
+                    type="email"
+                    :class="[{ 'invalid': failed }]"
+                    v-model="email"
+                    placeholder="pl: kovacspeter@gmail.com"
+                  >
+                  <span class="error-field">{{ errors[0] }}</span>
+                </validation-provider>
+
+            </div>
+            
+            <div class="section-wrapper">
+              <h2 class="form-title">Telefonszám:</h2>
+
+                <validation-provider class="touch-wrapper" mode="lazy" name="phone" rules="required" v-slot="{ errors, failed }">
+                  <input
+                    type="phone"
+                    :class="[{ 'invalid': failed }]"
+                    v-model="phone"
+                    placeholder="pl: 063012345678"
+                  >
+                  <span class="error-field">{{ errors[0] }}</span>
+                </validation-provider>
+
+            </div>
           </div>
-          
+
           <div class="section-wrapper">
             <h2 class="form-title">Ittas vezetés elkövetésekor:</h2>
 
@@ -73,7 +106,7 @@
           </div>
 
           <div class="section-wrapper">
-            <h2 class="form-title">Alkohol szint értéke:</h2>
+            <h2 class="form-title">{{ alcoholTitle }}</h2>
             <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
               <input type="text" class="hidden" v-model="bloodLevel">
               <div
@@ -87,7 +120,20 @@
               <span class="error-field">{{ errors[0] }}</span>
             </validation-provider>
           </div>
-          <button type="submit" >Submit</button>
+
+          <div class="section-wrapper">
+            <h2 class="form-title">Üzenet</h2>
+              <div class="touch-wrapper">
+                <textarea
+                  type="text"
+                  v-model="message"
+                  placeholder="Ide írja üzenetét"
+                />
+              </div>
+          </div>
+
+          <button type="submit" class="button-cta">KÜLDÉS</button>
+          <span v-if="failed">asasd</span>
         </form>
       </ValidationObserver>
 
@@ -132,16 +178,23 @@ export default {
         "2.51 g/l - 3.5 g/l",
         "3.5 g/l fölött"
       ],
+      name: '',
       email: '',
+      phone: '',
       accident: '',
       sampleType: '',
-      bloodLevel: ''
+      bloodLevel: '',
+      message: ''
     }
   },
 
   computed: {
     alcoholValues() {
       return this.sampleType === 'szonda' ? this.airAlcoholValues : this.bloodAlcoholValues;
+    },
+
+    alcoholTitle () {
+      return this.sampleType !== 'szonda' ? 'Légalkoholszint értéke:' : 'Véralkoholszint értéke'
     }
   },
 
@@ -155,20 +208,37 @@ export default {
 <style lang="scss" scoped>
 .section {
   background: #fff;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin: 30px 0;
+
+  .button-cta {
+    background-color: #C54552;
+    color: #fff;
+  }
 }
 
 .section-wrapper {
   margin: 40px 0;
 }
 
+.section-horizontal {
+  display: flex;
+  align-items: center;
+  margin: 0 -5px;
+  flex-wrap: wrap;
+
+  .section-wrapper {
+    margin: 20px 10px 0;
+  }
+}
+
 .form-title {
   color: #2C3E50;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  margin: 5px 0;
+  margin: 2px 0;
 }
 
 .touch-wrapper {
@@ -176,6 +246,7 @@ export default {
   flex-wrap: wrap;
   position: relative;
 
+  textarea,
   input {
     width: 100%;
     max-width: 300px;
@@ -183,6 +254,10 @@ export default {
     border: 2px solid #2C3E50;
     padding: 5px 10px;
     border-radius: 5px; 
+
+    &::placeholder {
+      font-size: 12px;
+    }
 
     &:focus {
       outline: none;
@@ -193,11 +268,16 @@ export default {
     }
   }
 
+  textarea {
+    max-width: 100%;
+    min-height: 100px;
+  }
+
   .error-field {
     position: absolute;
     bottom: -22px;
     left: 7px;
-    font-size: 12px;
+    font-size: 11px;
     color: red;
     font-weight: 700;
     text-transform: uppercase;

@@ -21,7 +21,7 @@
       <div class="section-inner">
         <div class="cta-wrapper">
           <h2 class="cta-title">vezetői engedélye érdekében ne késlekedjen ügyvédhez fordulni!</h2>
-          <button type="button" class="button-cta">visszahívást kérek</button>
+          <button type="button" class="button-cta">konzultációt kérek</button>
         </div>
       </div>
     </div>
