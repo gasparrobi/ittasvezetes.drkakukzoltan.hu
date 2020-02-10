@@ -241,7 +241,7 @@ export default {
 
     handleIntersection (entries) {
       entries.forEach(entry => {
-        if (entry.intersectionRatio === 1) {
+        if (entry.intersectionRatio > 0) {
           this.sendEvent({
             event_category: 'event',
             action: 'view',
