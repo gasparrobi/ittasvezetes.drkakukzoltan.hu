@@ -53,13 +53,13 @@
       <div class="section-inner">
         <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
         <h2 class="secondary-title">Kérjen visszahívást email-ben!<br>Még akár aznap visszahívom!</h2>
-        <button type="button" class="button-cta">konzultációt kérek</button>
+        <button type="button" class="button-cta" @click="onCtaClick">konzultációt kérek</button>
         <p class="contact-secondary">vagy keressen a <a href="tel:+36304322665">+36 30 432 2665</a> számon</p>
       </div>
     </div>
 
-    <introduction1 />
-    <introduction-mobile />
+    <introduction1 @cta-click="onCtaClick" />
+    <introduction-mobile @cta-click="onCtaClick" />
 
     <!-- WHY CHOOSE US -->
     <component 
@@ -68,9 +68,10 @@
       :is="item.component"
       :content="item"
       :selected-question="selectedQuestion"
+      @cta-click="onCtaClick"
     />
 
-    <contact-form />
+    <contact-form @on-submit="onContactFormSubmit" />
     
     <contact-methods />
     <ClientOnly>
@@ -125,6 +126,12 @@ import ContactMethods from '../components/ContactMethods';
 import ContactForm from '../components/ContactForm';
 import { scrollTo } from '../utils/index';
 
+const OBSERVER_OPTIONS = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 1
+};
+
 export default {
   name: 'index',
 
@@ -146,7 +153,8 @@ export default {
 
   data () {
     return {
-      selectedQuestion: ''
+      selectedQuestion: '',
+      observer: null
     }
   },
 
@@ -173,10 +181,22 @@ export default {
   },
 
   mounted () {
-    navigator.clipboard.writeText('hello');
     if (this.$route.hash) {
       this.selectedQuestion = this.$route.hash.replace('#', '');
       this.scrollToItem(this.selectedQuestion);
+    }
+    if (IntersectionObserver) {
+      this.observer = new IntersectionObserver(this.handleIntersection, OBSERVER_OPTIONS);
+    }
+    if (this.observer) {
+      const items = document.querySelectorAll('[data-observe="observe"]');
+      items.forEach(item => this.observer.observe(item));
+    }
+  },
+
+  beforeDestroy () {
+    if (this.observer) {
+      this.observer.disconnect();
     }
   },
 
@@ -205,6 +225,47 @@ export default {
           return 'template'
           break;
       }
+    },
+
+    onCtaClick () {
+      this.sendCtaEvent();
+      this.scrollToItem('konzultacio-adatlap');
+    },
+
+    onContactFormSubmit () {
+      this.sendEvent({
+        event_category: 'Contact Form',
+        action: 'submit'
+      })
+    },
+
+    handleIntersection (entries) {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio === 1) {
+          this.sendEvent({
+            event_category: 'event',
+            action: 'view',
+            event_label: entry.target.id
+          })
+          this.observer.unobserve(entry.target);
+        }
+      })
+    },
+
+    sendEvent ({ event_category, action, event_label = '' }) {
+      if (this.$gtag) {
+        this.$gtag.event(action, {
+          event_category,
+          event_label
+        })
+      }
+    },
+
+    sendCtaEvent () {
+      this.sendEvent({
+        event_category: 'CTA',
+        action: 'click'
+      })
     }
   }
 }

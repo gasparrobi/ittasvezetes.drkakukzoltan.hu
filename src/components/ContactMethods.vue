@@ -1,5 +1,5 @@
 <template>
-  <section id="contact-methods" class="section">
+  <section id="elerhetosegeim" data-observe="observe" class="section">
     <div class="section-inner">
       <h1 class="title">Elérhetőségeim</h1>
       <div class="contact-wrapper">

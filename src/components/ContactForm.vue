@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section" id="konzultacio-adatlap" data-observe="observe">
     <div class="section-inner">
 
       <h1 class="title">Konzultációhoz kérem töltse ki az alábbi adatlapot</h1>
@@ -200,6 +200,7 @@ export default {
 
   methods: {
     async onSubmit() {
+      this.$emit('on-submit');
       const result = await this.$refs.observer.validate();
     }
   }

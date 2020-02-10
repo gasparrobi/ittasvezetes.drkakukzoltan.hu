@@ -4,6 +4,8 @@
 import DefaultLayout from '~/layouts/Default.vue';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required, email } from 'vee-validate/dist/rules';
+import VueGtag from "vue-gtag";
+
 require('typeface-montserrat');
 require('typeface-open-sans')
 
@@ -23,6 +25,10 @@ export default function (Vue, { router, head, isClient }) {
 
   Vue.component('ValidationProvider', ValidationProvider);
   Vue.component('ValidationObserver', ValidationObserver);
+
+  Vue.use(VueGtag, {
+    config: { id: "UA-100816935-1" }
+  });
 
   /* router.options.scrollBehavior = function(to, from , savedPosition) {
     return false;

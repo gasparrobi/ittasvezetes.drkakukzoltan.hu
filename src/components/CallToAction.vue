@@ -3,7 +3,7 @@
     <div class="section-inner">
       <div class="cta-wrapper">
         <h2 class="cta-title">{{ content.content }}</h2>
-        <button type="button" class="button-cta">{{ content.title }}</button>
+        <button type="button" class="button-cta" @click="$emit('cta-click')">{{ content.title }}</button>
       </div>
     </div>
   </div>

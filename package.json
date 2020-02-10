@@ -1,5 +1,5 @@
 {
-  "name": "ittas",
+  "name": "ittas-vezetes-ugyved",
   "private": true,
   "scripts": {
     "build": "gridsome build",
@@ -9,9 +9,11 @@
   "dependencies": {
     "@gridsome/source-airtable": "^0.1.4",
     "gridsome": "^0.7.0",
+    "intersection-observer": "^0.7.0",
     "typeface-montserrat": "0.0.75",
     "typeface-open-sans": "0.0.75",
-    "vee-validate": "^3.2.4"
+    "vee-validate": "^3.2.4",
+    "vue-gtag": "^1.6.1"
   },
   "devDependencies": {
     "gridsome-plugin-tailwindcss": "^2.2.32",

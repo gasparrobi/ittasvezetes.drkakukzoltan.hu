@@ -4,6 +4,7 @@
       <section
         :id="content.slug"
         class="content"
+        data-observe="observe"
       >
         <h1
           class="title"
