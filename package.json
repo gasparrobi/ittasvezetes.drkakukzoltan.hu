@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@gridsome/source-airtable": "^0.1.4",
+    "autoprefixer": "^9.7.4",
     "gridsome": "^0.7.0",
     "intersection-observer": "^0.7.0",
     "typeface-montserrat": "0.0.75",

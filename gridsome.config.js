@@ -5,6 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const path = require('path')
+const autoprefixer = require("autoprefixer");  // ADDED THIS LINE
 
 function addStyleResource (rule) {
   rule.use('style-resource')
@@ -15,6 +16,8 @@ function addStyleResource (rule) {
       ],
     })
 }
+
+const postcssPlugins = [autoprefixer()];
 
 module.exports = {
   siteName: 'dr. Kakuk Zoltán Dániel',
@@ -45,6 +48,13 @@ module.exports = {
       },
     },
   ],
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: postcssPlugins
+      }
+    }
+  },
   chainWebpack: config => {
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()

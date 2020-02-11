@@ -34,9 +34,18 @@
           <a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a>
         </div>
         <div class="box-wrapper">
-          <div class="box">Közel 7 év tapasztalat</div>
-          <div class="box">Szakértelem</div>
-          <div class="box">Naprakész tájékoztatás</div>
+          <div class="box">
+            <tapasztalat />
+            <span>Közel 7 év tapasztalat</span>
+          </div>
+          <div class="box">
+            <szakertelem />
+            <span>Szakértelem</span>
+          </div>
+          <div class="box">
+            <tajekoztatas />
+            <span>Naprakész tájékoztatás</span>
+          </div>
         </div>
       </div>
     </div>
@@ -44,8 +53,18 @@
 </template>
 
 <script>
+import Tapasztalat from '../assets/images/tapasztalat.svg';
+import Szakertelem from '../assets/images/szakertelem.svg';
+import Tajekoztatas from '../assets/images/tajekoztatas.svg';
+
 export default {
   name: 'Introduction',
+
+  components: {
+    Tapasztalat,
+    Szakertelem,
+    Tajekoztatas
+  }
 
 }
 </script>
@@ -244,10 +263,11 @@ p {
 
   .box {
     flex: 1;
+    flex-direction: column;
     max-width: 215px;
-    height: 135px;
+    height: 100%;
     background-color: #fff;
-    border: 5px solid #949494;
+    /* border: 5px solid #949494; */
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -261,6 +281,11 @@ p {
     color: #2C3E50;
     box-shadow: 0px 15px 22px 2px rgba(0,0,0,.1);
 
+    svg {
+      height: 40px;
+      margin-bottom: 15px;
+    }
+
     & ~.box {
       margin-left: 10px;
 
@@ -270,7 +295,7 @@ p {
     }
 
     @include break(tablet) {
-      font-size: 14px;
+      font-size: 12px;
     }
 
     @include break(phablet) {
