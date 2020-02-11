@@ -136,7 +136,7 @@ export default {
   name: 'index',
 
   metaInfo: {
-    
+    title: 'Ittas vezetés ügyvéd'
   },
 
   components: {

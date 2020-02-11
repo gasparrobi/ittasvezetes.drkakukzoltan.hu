@@ -219,6 +219,10 @@ export default {
   }
 }
 
+h1 {
+  margin-bottom: 20px;
+}
+
 .section-wrapper {
   margin: 40px 0;
 }
