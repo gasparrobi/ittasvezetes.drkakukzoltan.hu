@@ -48,13 +48,6 @@ module.exports = {
       },
     },
   ],
-  css: {
-    loaderOptions: {
-      postcss: {
-        plugins: postcssPlugins
-      }
-    }
-  },
   chainWebpack: config => {
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
@@ -67,5 +60,14 @@ module.exports = {
     types.forEach(type => {
       addStyleResource(config.module.rule('scss').oneOf(type))
     })
+
+    config.module
+    .rule('scss') // or sass, scss, less, postcss, stylus
+    .oneOf('normal') // or module
+      .use('postcss-loader')
+        .tap(options => {
+          options.plugins.push(autoprefixer())
+          return options
+        })
   }
 }
