@@ -42,7 +42,12 @@ export default function (Vue, { router, head, isClient }) {
   
   head.meta.push({
     name: 'og:image',
-    content: '/assets/static/ittasvezetessocial.jpg'
+    content: '/ittasvezetessocial.jpg'
+  });
+
+  head.meta.push({
+    name: 'og:url',
+    content: 'https://ittasvezetes.drkakukzoltan.hu'
   });
   
   head.meta.push({
