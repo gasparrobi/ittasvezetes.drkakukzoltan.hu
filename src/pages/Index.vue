@@ -136,7 +136,7 @@ export default {
   name: 'index',
 
   metaInfo: {
-    title: 'Ittas vezetés ügyvéd - dr. Kakuk Zoltán Dániel'
+    
   },
 
   components: {

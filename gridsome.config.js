@@ -17,7 +17,7 @@ function addStyleResource (rule) {
 }
 
 module.exports = {
-  siteName: '',
+  siteName: 'Ittas vezetés ügyvéd - dr. Kakuk Zoltán Dániel',
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',

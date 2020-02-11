@@ -62,7 +62,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .section-inner {
-  padding: 30px 40px;
+  padding: 20px 40px;
 
   @include break(mobile) {
     padding: 20px;
@@ -73,11 +73,11 @@ export default {
   color: #2C3E50;
   text-transform: uppercase;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 32px;
 
   @include break(mobile) {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 26px;
   }
 
@@ -113,7 +113,7 @@ export default {
 p {
   margin-top: 15px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   color: #2C3E50;
 
   .content--animate & {
@@ -121,7 +121,7 @@ p {
   }
 
   @include break(mobile) {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 

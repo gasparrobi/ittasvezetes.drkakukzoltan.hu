@@ -30,6 +30,25 @@ export default function (Vue, { router, head, isClient }) {
     config: { id: "UA-100816935-1" }
   });
 
+  head.meta.push({
+    name: 'og:title',
+    content: 'Mire számíthatok 2020-ban ha ittasan vezettem? - dr. Kakuk Zoltán Dániel, ügyvéd'
+  });
+
+  head.meta.push({
+    name: 'og:description',
+    content: 'Büntetőeljárás indult ittas vezetés miatt Önnel szemben? Ismerje meg a jogait és lehetőségeit, közérthető módon!'
+  });
+  
+  head.meta.push({
+    name: 'og:image',
+    content: '/assets/static/ittasvezetessocial.jpg'
+  });
+  
+  head.meta.push({
+    charset: "utf-8"
+  });
+
   /* router.options.scrollBehavior = function(to, from , savedPosition) {
     return false;
   } */
