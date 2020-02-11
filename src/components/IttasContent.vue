@@ -10,7 +10,7 @@
           class="title"
           @click="share"
         >{{ content.title }}</h1>
-        <p>{{ content.content }}</p>
+        <p v-html="content.content"></p>
       </section>
     </div>
   </div>
