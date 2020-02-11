@@ -20,7 +20,7 @@
                   <input
                     type="text"
                     :class="[{ 'invalid': failed }]"
-                    v-model="name"
+                    v-model="formData.name"
                     placeholder="pl: Kovács Péter"
                   >
                   <span class="error-field">{{ errors[0] }}</span>
@@ -35,7 +35,7 @@
                   <input
                     type="email"
                     :class="[{ 'invalid': failed }]"
-                    v-model="email"
+                    v-model="formData.email"
                     placeholder="pl: kovacspeter@gmail.com"
                   >
                   <span class="error-field">{{ errors[0] }}</span>
@@ -50,7 +50,7 @@
                   <input
                     type="phone"
                     :class="[{ 'invalid': failed }]"
-                    v-model="phone"
+                    v-model="formData.phone"
                     placeholder="pl: 063012345678"
                   >
                   <span class="error-field">{{ errors[0] }}</span>
@@ -63,17 +63,17 @@
             <h2 class="form-title">Ittas vezetés elkövetésekor:</h2>
 
               <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
-                <input type="text" class="hidden" v-model="accident">
+                <input type="text" class="hidden" v-model="formData.accident">
                 <div 
-                  :class="['touch', { 'touch-invalid': failed, 'touch-selected': accident === 'accident' }]"
-                  @click="accident = 'accident'"
+                  :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.accident === 'accident' }]"
+                  @click="formData.accident = 'accident'"
                 >
                   <car class="svg-icon"/>
                   <span>nem történt baleset / sérülés</span>
                 </div>
                 <div
-                  :class="['touch', { 'touch-invalid': failed, 'touch-selected': accident === 'no accident' }]"
-                  @click="accident = 'no accident'"
+                  :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.accident === 'no accident' }]"
+                  @click="formData.accident = 'no accident'"
                 >
                   <accident class="svg-icon"/>
                   <span>Történt baleset / sérülés</span>
@@ -86,17 +86,17 @@
           <div class="seciont-wrapper">
             <h2 class="form-title">Alkoholszint mérésének módja:</h2>
             <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
-              <input type="text" class="hidden" v-model="sampleType">
+              <input type="text" class="hidden" v-model="formData.sampleType">
               <div 
-                :class="['touch', { 'touch-invalid': failed, 'touch-selected': sampleType === 'szonda' }]"
-                @click="sampleType = 'szonda'"
+                :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.sampleType === 'szonda' }]"
+                @click="formData.sampleType = 'szonda'"
               >
                 <breathalyzer class="svg-icon"/>
                 <span>csak szondáztatás</span>
               </div>
               <div 
-                :class="['touch', { 'touch-invalid': failed, 'touch-selected': sampleType === 'ver-vizelet' }]"
-                @click="sampleType = 'ver-vizelet'"
+                :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.sampleType === 'ver-vizelet' }]"
+                @click="formData.sampleType = 'ver-vizelet'"
               >
                 <syringe class="svg-icon"/>
                 <span>vér / vizelet vétel</span>
@@ -108,12 +108,12 @@
           <div class="section-wrapper">
             <h2 class="form-title">{{ alcoholTitle }}</h2>
             <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
-              <input type="text" class="hidden" v-model="bloodLevel">
+              <input type="text" class="hidden" v-model="formData.bloodLevel">
               <div
                 v-for="item in alcoholValues"
                 :key="item"
-                :class="['touch', 'touch-mini', { 'touch-invalid': failed, 'touch-selected': bloodLevel === item }]"
-                @click="bloodLevel = item"
+                :class="['touch', 'touch-mini', { 'touch-invalid': failed, 'touch-selected': formData.bloodLevel === item }]"
+                @click="formData.bloodLevel = item"
               >
                 <span>{{ item }}</span>
               </div>
@@ -126,7 +126,7 @@
               <div class="touch-wrapper">
                 <textarea
                   type="text"
-                  v-model="message"
+                  v-model="formData.message"
                   placeholder="Ide írja üzenetét"
                 />
               </div>
@@ -141,6 +141,8 @@
   </div>  
 </template>
 <script>
+import axios from 'axios';
+import to from 'await-to-js';
 import Car from '../assets/images/car.svg';
 import Accident from '../assets/images/accident.svg';
 import Breathalyzer from '../assets/images/breathalyzer.svg';
@@ -178,30 +180,49 @@ export default {
         "2.51 g/l - 3.5 g/l",
         "3.5 g/l fölött"
       ],
-      name: '',
-      email: '',
-      phone: '',
-      accident: '',
-      sampleType: '',
-      bloodLevel: '',
-      message: ''
+      formData: this.defaultData()
     }
   },
 
   computed: {
     alcoholValues() {
-      return this.sampleType === 'szonda' ? this.airAlcoholValues : this.bloodAlcoholValues;
+      return this.formData.sampleType === 'szonda' ? this.airAlcoholValues : this.bloodAlcoholValues;
     },
 
     alcoholTitle () {
-      return this.sampleType !== 'szonda' ? 'Légalkoholszint értéke:' : 'Véralkoholszint értéke'
+      return this.formData.sampleType !== 'szonda' ? 'Légalkoholszint értéke:' : 'Véralkoholszint értéke'
     }
   },
 
   methods: {
+    defaultData () {
+      return {
+        name: '',
+        email: '',
+        phone: '',
+        accident: '',
+        sampleType: '',
+        bloodLevel: '',
+        message: ''
+      }
+    },
+
     async onSubmit() {
       this.$emit('on-submit');
       const result = await this.$refs.observer.validate();
+      if (!result) return;
+
+      
+      
+      const params = new URLSearchParams();
+      params.append('nev', this.formData.name);
+      params.append('email', this.formData.email);
+      params.append('message', this.formData.message);
+      params.append('targy', this.formData.accident);
+      params.append('telefonszam', this.formData.phone);
+      const [error, response] = await to(axios.post('https://script.google.com/macros/s/AKfycbyxpAXofHS1ffzYe6_DMwAdoxkpQfZ7PO1UfVmm-pVXDt2II_Yf/exec', params));
+      this.formData = this.defaultData();
+      this.$refs.observer.reset();
     }
   }
 }
