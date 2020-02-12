@@ -33,8 +33,14 @@
 
     <div class="section section-topnav">
       <div class="section-inner">
-        <a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a>
-        <a href="tel:+36304322665">+36 30 432 2665</a>
+        <div class="contact-wrapper">
+          <email />
+          <a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a>
+        </div>
+        <div class="contact-wrapper">
+          <phone />
+          <a href="tel:+36304322665">+36 30 432 2665</a>
+        </div>
       </div>
     </div>
     
@@ -44,12 +50,17 @@
         <a href="/" class="logo"><span>ittasvezetes</span>.drkakukzoltan.hu</a>
         <nav class="menu">
           <ul>
-            <li><a href="#legalkoholszint-tablazat" @click="pushHistoryAndScroll('legalkoholszint-tablazat')">alkoholszint táblázat</a></li>
+            <li><a href="#" @click="scrollToItem('legalkoholszint-tablazat')">alkoholszint táblázat</a></li>
             <li><a target="_blank" href="https://drkakukzoltan.hu" rel="noopener">egyéb bűncselekmények</a></li>
-            <li>kapcsolat</li>
+            <li><a href="#" @click="scrollToItem('konzultacio-adatlap')"><span>kapcsolat</span></a></li>
           </ul>
         </nav>
       </div>
+      <Slide right>
+        <a href="#" @click="scrollToItem('legalkoholszint-tablazat')"><span>alkoholszint táblázat</span></a>
+        <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener"><span>egyéb bűncselekmények</span></a>
+        <a href="#" @click="scrollToItem('konzultacio-adatlap')"><span>kapcsolat</span></a>
+      </Slide>
       <div class="section-inner">
         <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
         <h2 class="secondary-title">Kérjen visszahívást email-ben!<br>Még akár aznap visszahívom!</h2>
@@ -124,6 +135,9 @@ import AlcoholTable from '../components/AlcoholTable';
 import IttasFooter from '../components/IttasFooter';
 import ContactMethods from '../components/ContactMethods';
 import ContactForm from '../components/ContactForm';
+import Email from '../assets/images/email.svg';
+import Phone from '../assets/images/phone.svg';
+import { Slide } from 'vue-burger-menu'
 import { scrollTo } from '../utils/index';
 
 const OBSERVER_OPTIONS = {
@@ -148,6 +162,9 @@ export default {
     IttasFooter,
     ContactMethods,
     ContactForm,
+    Email,
+    Phone,
+    Slide,
     ContactMap: () => import('../components/ContactMap').then(ContactMap => ContactMap).catch(), 
   },
 
@@ -311,6 +328,17 @@ export default {
     line-height: 16px;
     color: #4B4B4B;
 
+    .contact-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-right: 5px;
+        transform: scale(.8);
+      }
+    }
+
     .section-inner {
       padding: 5px 40px;
       flex-direction: row;
@@ -321,10 +349,10 @@ export default {
         align-items: center;
       }
 
-      a {
+      .contact-wrapper {
         transition: all 200ms;
 
-        &~a {
+        &~.contact-wrapper {
           margin-left: 20px;
 
           @include break(mobile) {
@@ -345,6 +373,29 @@ export default {
     background-image: linear-gradient(90deg, rgba(34, 47, 169, 0.83) 0%, rgba(187, 53, 66, 0.83) 100%), url('../assets/images/hero-img.jpg');
     background-size: cover;
     background-position: center;
+    position: relative;
+
+    .bm-burger-button {
+      display: none;
+      right: 20px;
+      top: 55px;
+      height: 25px;
+
+      @include break(phablet) {
+        display: block;
+      }
+    }
+
+    .bm-burger-bars {
+      background-color: #fff;
+    }
+
+    .line-style {
+      position: absolute;
+      height: 15%;
+      left: 0;
+      right: 0;
+    }
 
     @include break(mobile) {
       min-height: 500px;
@@ -373,7 +424,11 @@ export default {
         text-transform: uppercase;
         user-select: none;
 
-        @include break(mobile) {
+        @include break(tablet) {
+          font-size: 12px;
+        }
+
+        @include break(phablet) {
           display: none;
         }
 
@@ -402,6 +457,7 @@ export default {
 
       .logo {
         padding: 10px 15px;
+        margin-right: 10px;
         background-color: #fff;
         border-radius: 3px;
         font-size: 13px;
@@ -413,6 +469,10 @@ export default {
 
         @include break(mobile) {
           font-size: 12px;
+        }
+
+        @include break(mobile-s) {
+          font-size: 10px;
         }
 
         span {

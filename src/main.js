@@ -39,6 +39,11 @@ export default function (Vue, { router, head, isClient }) {
     name: 'og:description',
     content: 'Büntetőeljárás indult ittas vezetés miatt Önnel szemben? Ismerje meg a jogait és lehetőségeit, közérthető módon!'
   });
+
+  head.meta.push({
+    name: 'description',
+    content: 'Az ittas vezetés miatt indult büntetőeljárás kimenetele számtalan körülménytől függhet 2020-ban. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is. Ismerje meg ezeket!'
+  });
   
   head.meta.push({
     name: 'og:image',

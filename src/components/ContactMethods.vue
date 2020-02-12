@@ -33,6 +33,14 @@ export default {
   margin: 60px 0;
 }
 
+.title {
+  font-size: 16px;
+
+  @include break(mobile) {
+    font-size: 15px;
+  }
+}
+
 .contact-wrapper {
   display: flex;
   align-items: center;

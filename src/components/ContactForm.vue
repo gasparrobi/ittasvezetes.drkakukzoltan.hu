@@ -136,7 +136,8 @@
             <span v-if="!isLoading">KÜLDÉS</span>
             <span v-else class="spinner"></span>
           </button>
-          <span v-if="failed" class="error-field" style="position:relative;">Kérem ellenőrizze, hogy minden kötelező mezőt kitöltött-e</span>
+
+          <span class="gdpr" style="position:relative;">Jelen üzenetem megküldésével egyidejűleg az Általános Adatvédelmi Rendelet (GDPR) 6. cikk (1) bekezdés a) pontja, továbbá a 7. cikk rendelkezése alapján - tudomásul veszem, hogy az adatkezelő, azaz dr. Kakuk Zoltán Dániel ügyvéd a most megadott személyes adataimat a GDPR és az Infotv. vonatkozó és releváns feltételei szerint, jelen jogi szolgáltatás céljaival összefüggésben, kizárólag a kapcsolatfelvétel megkönnyítése érdekében kezelheti.</span>
         </form>
       </ValidationObserver>
 
@@ -291,6 +292,12 @@ export default {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.gdpr {
+  display: block;
+  margin-top: 30px;
+  font-size: 11px;
 }
 
 h1 {
