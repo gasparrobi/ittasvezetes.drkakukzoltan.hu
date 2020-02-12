@@ -9,27 +9,26 @@
         <span>{{ errors[0] }}</span>
       </validation-provider> -->
 
-      <ValidationObserver ref="observer" v-slot="{ invalid, failed }">
+      <ValidationObserver ref="observer">
         <form @submit.prevent="onSubmit">
           
           <div class="section-horizontal">
             <div class="section-wrapper">
-              <h2 class="form-title">Név:</h2>
+              <h2 class="form-title">Név</h2>
 
-                <validation-provider class="touch-wrapper" mode="lazy" name="name" rules="required" v-slot="{ errors, failed }">
+                <div class="touch-wrapper" name="name">
                   <input
                     type="text"
                     :class="[{ 'invalid': failed }]"
                     v-model="formData.name"
                     placeholder="pl: Kovács Péter"
                   >
-                  <span class="error-field">{{ errors[0] }}</span>
-                </validation-provider>
+                </div>
 
             </div>
 
             <div class="section-wrapper">
-              <h2 class="form-title">E-mail cím:</h2>
+              <h2 class="form-title">E-mail cím</h2>
 
                 <validation-provider class="touch-wrapper" mode="lazy" name="email" v-slot="{ errors, failed }">
                   <input
@@ -44,7 +43,7 @@
             </div>
             
             <div class="section-wrapper">
-              <h2 class="form-title">Telefonszám:</h2>
+              <h2 class="form-title">Telefonszám*</h2>
 
                 <validation-provider class="touch-wrapper" mode="lazy" name="phone" rules="required" v-slot="{ errors, failed }">
                   <input
@@ -84,7 +83,7 @@
           </div> -->
 
           <div class="section-wrapper">
-            <h2 class="form-title">Alkoholszint mérésének módja:</h2>
+            <h2 class="form-title">Alkoholszint mérésének módja*</h2>
             <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
               <input type="text" class="hidden" v-model="formData.sampleType">
               <div 
@@ -106,7 +105,7 @@
           </div>
 
           <div class="section-wrapper">
-            <h2 class="form-title">{{ alcoholTitle }}</h2>
+            <h2 class="form-title">{{ alcoholTitle }}*</h2>
             <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
               <input type="text" class="hidden" v-model="formData.bloodLevel">
               <div
@@ -137,7 +136,7 @@
             <span v-else class="spinner"></span>
           </button>
 
-          <span class="gdpr" style="position:relative;">Jelen üzenetem megküldésével egyidejűleg az Általános Adatvédelmi Rendelet (GDPR) 6. cikk (1) bekezdés a) pontja, továbbá a 7. cikk rendelkezése alapján - tudomásul veszem, hogy az adatkezelő, azaz dr. Kakuk Zoltán Dániel ügyvéd a most megadott személyes adataimat a GDPR és az Infotv. vonatkozó és releváns feltételei szerint, jelen jogi szolgáltatás céljaival összefüggésben, kizárólag a kapcsolatfelvétel megkönnyítése érdekében kezelheti.</span>
+          <span class="gdpr" style="position:relative;">Jelen üzenetem megküldésével egyidejűleg az Általános Adatvédelmi Rendelet (GDPR) 6. cikk (1) bekezdés a) pontja, továbbá a 7. cikk rendelkezése alapján - tudomásul veszem, hogy az adatkezelő, azaz dr. Kakuk Zoltán Dániel ügyvéd a most - önkéntesen - megadott személyes adataimat a GDPR és az Infotv. vonatkozó és releváns feltételei szerint, jelen jogi szolgáltatás céljaival összefüggésben, kizárólag a kapcsolatfelvétel megkönnyítése érdekében kezeli. Az űrlap kitöltése az érintettek azonosítását harmadik fél számára nem teszi lehetővé, a fenti adatok megismerésére kizárólag az adatkezelő jogosult, a személyes adatok biztonsága technikai intézkedések alkalmazásával megfelelően biztosítva van. Az űrlap beküldésével egyidejűleg tudomásul veszem, hogy a személyes adataim kezelését az adatkezelő felé jelzett írásos bejelentésemmel visszavonhatom.</span>
         </form>
       </ValidationObserver>
 
@@ -209,7 +208,7 @@ export default {
     },
 
     alcoholTitle () {
-      return this.formData.sampleType !== 'szonda' ? 'Légalkoholszint értéke:' : 'Véralkoholszint értéke'
+      return this.formData.sampleType !== 'szonda' ? 'Légalkoholszint értéke' : 'Véralkoholszint értéke'
     }
   },
 
@@ -242,7 +241,7 @@ export default {
       params.append('telefonszam', this.formData.phone);
 
       this.isLoading = true;
-      const [error, response] = await to(axios.post('https://script.google.com/macros/s/AKfycbyxpAXofHS1ffzYe6_DMwAdoxkpQfZ7PO1UfVmm-pVXDt2II_Yf/exec', params));
+      const [error, response] = await to(axios.post('https://script.google.com/a/drkakukzoltan.hu/macros/s/AKfycbxJ_zOuqa8ZpPYszmqrjVXvgAWJcfX5-L5gzMdl/exec', params));
       this.isLoading = false;
 
       this.formData = this.defaultData();

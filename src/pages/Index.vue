@@ -63,7 +63,7 @@
       </Slide>
       <div class="section-inner">
         <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
-        <h2 class="secondary-title">Kérjen visszahívást email-ben!<br>Még akár aznap visszahívom!</h2>
+        <h2 class="secondary-title">Szakszerű jogi képviselet!<br>Kérjen konzultációt még ma!</h2>
         <button type="button" class="button-cta" @click="onCtaClick">konzultációt kérek</button>
         <p class="contact-secondary">vagy keressen a <a href="tel:+36304322665">+36 30 432 2665</a> számon</p>
       </div>
@@ -375,9 +375,17 @@ export default {
     background-position: center;
     position: relative;
 
-    .bm-burger-button {
+    .bm-menu {
+      background: #fff;
+    }
+
+    .bm-item-list>*>span {
+      color: #E04F5D;
+    }
+
+    .bm-burger-button.bm-burger-button.bm-burger-button {
       display: none;
-      right: 20px;
+      right: 20px !important;
       top: 55px;
       height: 25px;
 
