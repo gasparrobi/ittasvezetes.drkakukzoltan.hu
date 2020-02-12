@@ -196,7 +196,7 @@ export default {
           type,
           component: this.getComponent(type)
         }
-      }).sort((a, b) => a.id < b.id).reverse();
+      }).reverse()
     },
   },
 
@@ -212,6 +212,7 @@ export default {
       const items = document.querySelectorAll('[data-observe="observe"]');
       items.forEach(item => this.observer.observe(item));
     }
+    console.log(this.$page.content.edges);
   },
 
   beforeDestroy () {
