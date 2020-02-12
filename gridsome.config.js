@@ -43,7 +43,7 @@ module.exports = {
         tableName: process.env.AIRTABLE_TABLE_NAME, // required
         typeName: process.env.AIRTABLE_TYPE_NAME, // required
         select: {
-          view: 'Grid view'
+          sort: [{field: "id", direction: "asc"}]
         }, // optional
       },
     },
