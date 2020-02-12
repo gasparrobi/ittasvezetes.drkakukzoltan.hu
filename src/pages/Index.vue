@@ -1,6 +1,5 @@
 <template>
   <Layout>
-
     <!-- Learn how to use images here: https://gridsome.org/docs/images -->
     <!-- <g-image alt="Example image" src="~/favicon.png" width="135" />
 
@@ -13,10 +12,10 @@
     <p class="home-links">
       <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
       <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p> -->
+    </p>-->
 
     <div class="select-wrapper">
-     <!--  <select
+      <!--  <select
         name="gyakran-ismetelt-kerdesek"
         id="gyakra-ismetelt-kerdesek"
         v-model="selectedQuestion"
@@ -28,7 +27,7 @@
           :value="item.slug">
           {{ item.title }}
         </option>
-      </select> -->
+      </select>-->
     </div>
 
     <div class="section section-topnav">
@@ -43,31 +42,57 @@
         </div>
       </div>
     </div>
-    
+
     <!-- HERO SECTION -->
     <div class="section section-hero">
       <div class="navigation">
-        <a href="/" class="logo"><span>ittasvezetes</span>.drkakukzoltan.hu</a>
+        <a href="/" class="logo">
+          <span>ittasvezetes</span>.drkakukzoltan.hu
+        </a>
         <nav class="menu">
           <ul>
-            <li><a href="#" @click="scrollToItem('legalkoholszint-tablazat')">alkoholszint táblázat</a></li>
-            <li><a target="_blank" href="https://drkakukzoltan.hu" rel="noopener">egyéb bűncselekmények</a></li>
-            <li><a href="#" @click="scrollToItem('konzultacio-adatlap')"><span>kapcsolat</span></a></li>
+            <li>
+              <a href="#" @click="scrollToItem('legalkoholszint-tablazat')">alkoholszint táblázat</a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://drkakukzoltan.hu"
+                rel="noopener"
+              >egyéb bűncselekmények</a>
+            </li>
+            <li>
+              <a href="#" @click="scrollToItem('konzultacio-adatlap')">
+                <span>kapcsolat</span>
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
       <ClientOnly>
         <Slide right>
-          <a href="#" @click="scrollToItem('legalkoholszint-tablazat')"><span>alkoholszint táblázat</span></a>
-          <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener"><span>egyéb bűncselekmények</span></a>
-          <a href="#" @click="scrollToItem('konzultacio-adatlap')"><span>kapcsolat</span></a>
+          <a href="#" @click="scrollToItem('legalkoholszint-tablazat')">
+            <span>alkoholszint táblázat</span>
+          </a>
+          <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener">
+            <span>egyéb bűncselekmények</span>
+          </a>
+          <a href="#" @click="scrollToItem('konzultacio-adatlap')">
+            <span>kapcsolat</span>
+          </a>
         </Slide>
       </ClientOnly>
       <div class="section-inner">
         <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
-        <h2 class="secondary-title">Szakszerű jogi képviselet!<br>Kérjen konzultációt még ma!</h2>
+        <h2 class="secondary-title">
+          Szakszerű jogi képviselet!
+          <br />Kérjen konzultációt még ma!
+        </h2>
         <button type="button" class="button-cta" @click="onCtaClick">konzultációt kérek</button>
-        <p class="contact-secondary">vagy keressen a <a href="tel:+36304322665">+36 30 432 2665</a> számon</p>
+        <p class="contact-secondary">
+          vagy keressen a
+          <a href="tel:+36304322665">+36 30 432 2665</a> számon
+        </p>
       </div>
     </div>
 
@@ -75,9 +100,9 @@
     <introduction-mobile @cta-click="onCtaClick" />
 
     <!-- WHY CHOOSE US -->
-    <component 
-      v-for="(item, index) in ittasContent"
-      :key="index"
+    <component
+      v-for="item in ittasContent"
+      :key="item.id"
       :is="item.component"
       :content="item"
       :selected-question="selectedQuestion"
@@ -85,15 +110,15 @@
     />
 
     <contact-form @on-submit="onContactFormSubmit" />
-    
+
     <contact-methods />
     <ClientOnly>
       <contact-map />
     </ClientOnly>
-    
+
     <ittas-footer />
 
-<!--     <div class="section">
+    <!--     <div class="section">
      
       <div data-address="121 King Street, Melbourne Victoria 3000 Australia" data-popupstring-id="#popupstring1" class="map-canvas autoload-map"
         data-mapstyle="default" data-height="400" data-latlng="47.511425, 19.052229" data-title="sample title"
@@ -109,13 +134,13 @@
       <script src="https://maps.google.com/maps/api/js?key=AIzaSyAzf9wE8euXLL9aiSUEBSST1hvufVb_GvU"></script>
       <script src="/static/js/google-map-init.js "></script>
     </div>
- -->
+    -->
   </Layout>
 </template>
 
 <page-query>
   query content {
-    content: allContent {
+    content: allContent(sortBy: "id", order: ASC) {
       edges {
         node {
           title
@@ -130,29 +155,29 @@
 </page-query>
 
 <script>
-import IttasContent from '../components/IttasContent';
-import Introduction1 from '../components/Introduction1';
-import IntroductionMobile from '../components/IntroductionMobile';
-import CallToAction from '../components/CallToAction';
-import AlcoholTable from '../components/AlcoholTable';
-import IttasFooter from '../components/IttasFooter';
-import ContactMethods from '../components/ContactMethods';
-import ContactForm from '../components/ContactForm';
-import Email from '../assets/images/email.svg';
-import Phone from '../assets/images/phone.svg';
-import { scrollTo } from '../utils/index';
+import IttasContent from "../components/IttasContent";
+import Introduction1 from "../components/Introduction1";
+import IntroductionMobile from "../components/IntroductionMobile";
+import CallToAction from "../components/CallToAction";
+import AlcoholTable from "../components/AlcoholTable";
+import IttasFooter from "../components/IttasFooter";
+import ContactMethods from "../components/ContactMethods";
+import ContactForm from "../components/ContactForm";
+import Email from "../assets/images/email.svg";
+import Phone from "../assets/images/phone.svg";
+import { scrollTo } from "../utils/index";
 
 const OBSERVER_OPTIONS = {
   root: null,
-  rootMargin: '0px',
+  rootMargin: "0px",
   threshold: 1
 };
 
 export default {
-  name: 'index',
+  name: "index",
 
   metaInfo: {
-    title: 'Ittas vezetés ügyvéd'
+    title: "Ittas vezetés ügyvéd"
   },
 
   components: {
@@ -166,15 +191,21 @@ export default {
     ContactForm,
     Email,
     Phone,
-    ContactMap: () => import('../components/ContactMap').then(ContactMap => ContactMap).catch(), 
-    Slide: () => import('vue-burger-menu').then(m => m.Slide).catch(), 
+    ContactMap: () =>
+      import("../components/ContactMap")
+        .then(ContactMap => ContactMap)
+        .catch(),
+    Slide: () =>
+      import("vue-burger-menu")
+        .then(m => m.Slide)
+        .catch()
   },
 
-  data () {
+  data() {
     return {
-      selectedQuestion: '',
+      selectedQuestion: "",
       observer: null
-    }
+    };
   },
 
   watch: {
@@ -185,7 +216,7 @@ export default {
   },
 
   computed: {
-    sorted () {
+    ittasContent() {
       return this.$page.content.edges.map(edge => {
         const { title, content, slug, type, id } = edge.node;
         return {
@@ -195,22 +226,21 @@ export default {
           slug,
           type,
           component: this.getComponent(type)
-        }
-      }).reverse();
-    },
-
-    ittasContent () {
-      return this.sorted.sort((a, b) => Number(a) < Number(b));
+        };
+      });
     }
   },
 
-  mounted () {
+  mounted() {
     if (this.$route.hash) {
-      this.selectedQuestion = this.$route.hash.replace('#', '');
+      this.selectedQuestion = this.$route.hash.replace("#", "");
       this.scrollToItem(this.selectedQuestion);
     }
     if (IntersectionObserver) {
-      this.observer = new IntersectionObserver(this.handleIntersection, OBSERVER_OPTIONS);
+      this.observer = new IntersectionObserver(
+        this.handleIntersection,
+        OBSERVER_OPTIONS
+      );
     }
     if (this.observer) {
       const items = document.querySelectorAll('[data-observe="observe"]');
@@ -218,81 +248,81 @@ export default {
     }
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.observer) {
       this.observer.disconnect();
     }
   },
 
   methods: {
-    scrollToItem (id) {
+    scrollToItem(id) {
       scrollTo(`#${id}`, null, 300, null, -100);
     },
 
-    pushHistoryAndScroll (id) {
+    pushHistoryAndScroll(id) {
       this.$router.history.push(`/#${id}`);
       this.scrollToItem(id);
     },
 
-    getComponent (type) {
+    getComponent(type) {
       switch (type) {
-        case 'content':
-          return 'ittas-content'
+        case "content":
+          return "ittas-content";
           break;
-        case 'callToAction':
-          return 'call-to-action'
+        case "callToAction":
+          return "call-to-action";
           break;
-        case 'alkoholszint':
-          return 'alcohol-table'
+        case "alkoholszint":
+          return "alcohol-table";
           break;
         default:
-          return 'template'
+          return "template";
           break;
       }
     },
 
-    onCtaClick () {
+    onCtaClick() {
       this.sendCtaEvent();
-      this.scrollToItem('konzultacio-adatlap');
+      this.scrollToItem("konzultacio-adatlap");
     },
 
-    onContactFormSubmit () {
+    onContactFormSubmit() {
       this.sendEvent({
-        event_category: 'Contact Form',
-        action: 'submit'
-      })
+        event_category: "Contact Form",
+        action: "submit"
+      });
     },
 
-    handleIntersection (entries) {
+    handleIntersection(entries) {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
           this.sendEvent({
-            event_category: 'event',
-            action: 'view',
+            event_category: "event",
+            action: "view",
             event_label: entry.target.id
-          })
+          });
           this.observer.unobserve(entry.target);
         }
-      })
+      });
     },
 
-    sendEvent ({ event_category, action, event_label = '' }) {
+    sendEvent({ event_category, action, event_label = "" }) {
       if (this.$gtag) {
         this.$gtag.event(action, {
           event_category,
           event_label
-        })
+        });
       }
     },
 
-    sendCtaEvent () {
+    sendCtaEvent() {
       this.sendEvent({
-        event_category: 'CTA',
-        action: 'click'
-      })
+        event_category: "CTA",
+        action: "click"
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -324,7 +354,7 @@ export default {
 
   &-red {
     min-height: 210px;
-    background-color: #C54552;
+    background-color: #c54552;
     color: #fff;
   }
 
@@ -333,7 +363,7 @@ export default {
     font-size: 13px;
     font-weight: 600;
     line-height: 16px;
-    color: #4B4B4B;
+    color: #4b4b4b;
 
     .contact-wrapper {
       display: flex;
@@ -342,7 +372,7 @@ export default {
 
       svg {
         margin-right: 5px;
-        transform: scale(.8);
+        transform: scale(0.8);
       }
     }
 
@@ -359,7 +389,7 @@ export default {
       .contact-wrapper {
         transition: all 200ms;
 
-        &~.contact-wrapper {
+        & ~ .contact-wrapper {
           margin-left: 20px;
 
           @include break(mobile) {
@@ -377,7 +407,12 @@ export default {
 
   &-hero {
     min-height: 600px;
-    background-image: linear-gradient(90deg, rgba(34, 47, 169, 0.83) 0%, rgba(187, 53, 66, 0.83) 100%), url('../assets/images/hero-img.jpg');
+    background-image: linear-gradient(
+        90deg,
+        rgba(34, 47, 169, 0.83) 0%,
+        rgba(187, 53, 66, 0.83) 100%
+      ),
+      url("../assets/images/hero-img.jpg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -386,8 +421,8 @@ export default {
       background: #fff;
     }
 
-    .bm-item-list>*>span {
-      color: #E04F5D;
+    .bm-item-list > * > span {
+      color: #e04f5d;
     }
 
     .bm-burger-button.bm-burger-button.bm-burger-button {
@@ -450,22 +485,22 @@ export default {
         li {
           cursor: pointer;
 
-          &~ li {
+          & ~ li {
             margin-left: 30px;
           }
 
           &::after {
-              content: '';
-              display: block;
-              width: 0;
-              height: 2px;
-              background: #fff;
-              transition: width .3s;
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s;
           }
 
           &:hover::after {
-              width: 100%;
-              //transition: width .3s;
+            width: 100%;
+            //transition: width .3s;
           }
         }
       }
@@ -479,7 +514,7 @@ export default {
         line-height: 17px;
         text-transform: uppercase;
         font-weight: 700;
-        color: #4B4B4B;
+        color: #4b4b4b;
         cursor: pointer;
 
         @include break(mobile) {
@@ -491,7 +526,7 @@ export default {
         }
 
         span {
-          color: #D74251;
+          color: #d74251;
         }
       }
     }
@@ -504,7 +539,7 @@ export default {
     max-width: 380px;
     align-items: center;
     justify-content: center;
-    color: #E04F5D;
+    color: #e04f5d;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
@@ -516,10 +551,10 @@ export default {
     transition: all 200ms;
     user-select: none;
 
-     @include break(mobile) {
-        font-size: 18px;
-        padding: 20px;
-      }
+    @include break(mobile) {
+      font-size: 18px;
+      padding: 20px;
+    }
 
     &:hover {
       box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 1);
@@ -533,9 +568,9 @@ export default {
     color: #fff;
     text-transform: uppercase;
 
-     @include break(mobile) {
-        font-size: 13px;
-      }
+    @include break(mobile) {
+      font-size: 13px;
+    }
 
     a {
       text-decoration: underline;
@@ -592,7 +627,7 @@ select {
 }
 
 .title {
-  color: #2C3E50;
+  color: #2c3e50;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 18px;
@@ -604,13 +639,13 @@ select {
   }
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     margin-top: 2px;
     width: 85px;
     height: 3px;
-    background: #C54552;
-    transition: width .3s;
+    background: #c54552;
+    transition: width 0.3s;
   }
 
   .content--animate & {
@@ -620,15 +655,15 @@ select {
 
 @keyframes animateColor {
   0% {
-    color: #2C3E50;
+    color: #2c3e50;
   }
 
   50% {
-    color: #C54552;
+    color: #c54552;
   }
 
   100% {
-    color: #2C3E50;
+    color: #2c3e50;
   }
 }
 
@@ -636,7 +671,7 @@ p {
   margin-top: 15px;
   font-weight: 500;
   font-size: 15px;
-  color: #2C3E50;
+  color: #2c3e50;
 
   .content--animate & {
     animation: animateColor 1000ms forwards;
