@@ -56,11 +56,13 @@
           </ul>
         </nav>
       </div>
-      <Slide right>
-        <a href="#" @click="scrollToItem('legalkoholszint-tablazat')"><span>alkoholszint táblázat</span></a>
-        <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener"><span>egyéb bűncselekmények</span></a>
-        <a href="#" @click="scrollToItem('konzultacio-adatlap')"><span>kapcsolat</span></a>
-      </Slide>
+      <ClientOnly>
+        <Slide right>
+          <a href="#" @click="scrollToItem('legalkoholszint-tablazat')"><span>alkoholszint táblázat</span></a>
+          <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener"><span>egyéb bűncselekmények</span></a>
+          <a href="#" @click="scrollToItem('konzultacio-adatlap')"><span>kapcsolat</span></a>
+        </Slide>
+      </ClientOnly>
       <div class="section-inner">
         <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
         <h2 class="secondary-title">Szakszerű jogi képviselet!<br>Kérjen konzultációt még ma!</h2>
@@ -137,7 +139,6 @@ import ContactMethods from '../components/ContactMethods';
 import ContactForm from '../components/ContactForm';
 import Email from '../assets/images/email.svg';
 import Phone from '../assets/images/phone.svg';
-import { Slide } from 'vue-burger-menu'
 import { scrollTo } from '../utils/index';
 
 const OBSERVER_OPTIONS = {
@@ -164,8 +165,8 @@ export default {
     ContactForm,
     Email,
     Phone,
-    Slide,
     ContactMap: () => import('../components/ContactMap').then(ContactMap => ContactMap).catch(), 
+    Slide: () => import('vue-burger-menu').then(m => m.Slide).catch(), 
   },
 
   data () {
