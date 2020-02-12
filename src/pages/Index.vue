@@ -196,7 +196,7 @@ export default {
           type,
           component: this.getComponent(type)
         }
-      }).reverse()
+      }).sort((a, b) => a.id < b.id).reverse();
     },
   },
 
