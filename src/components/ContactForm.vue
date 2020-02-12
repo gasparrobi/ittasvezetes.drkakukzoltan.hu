@@ -207,7 +207,7 @@ export default {
     },
 
     alcoholTitle () {
-      return this.formData.sampleType !== 'szonda' ? 'Légalkoholszint értéke' : 'Véralkoholszint értéke'
+      return this.formData.sampleType === 'szonda' ? 'Légalkoholszint értéke' : 'Véralkoholszint értéke'
     }
   },
 
