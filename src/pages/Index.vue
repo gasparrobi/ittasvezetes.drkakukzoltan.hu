@@ -185,7 +185,7 @@ export default {
   },
 
   computed: {
-    ittasContent () {
+    sorted () {
       return this.$page.content.edges.map(edge => {
         const { title, content, slug, type, id } = edge.node;
         return {
@@ -196,8 +196,12 @@ export default {
           type,
           component: this.getComponent(type)
         }
-      }).reverse()
+      }).reverse();
     },
+
+    ittasContent () {
+      return this.sorted.sort((a, b) => Number(a) < Number(b));
+    }
   },
 
   mounted () {
@@ -212,7 +216,6 @@ export default {
       const items = document.querySelectorAll('[data-observe="observe"]');
       items.forEach(item => this.observer.observe(item));
     }
-    console.log(this.$page.content.edges);
   },
 
   beforeDestroy () {
