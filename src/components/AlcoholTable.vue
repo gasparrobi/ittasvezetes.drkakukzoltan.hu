@@ -46,7 +46,16 @@ export default {
 
   data() {
     return {
-      alcoholLevels: [
+      airLevels: [
+        {level: '0.1 mg/l alatt', value: 'az alkoholfogyasztás nem bizonyítható'},
+        {level: '0.1 mg/l - 0.25 mg/l', value: 'ivott de alkoholosan nem befolyásolt'},
+        {level: '0.1 mg/l - 0.25 mg/l', value: 'igen enyhe'},
+        {level: '0.1 mg/l - 0.25 mg/l', value: 'enyhe'},
+        {level: '0.1 mg/l - 0.25 mg/l', value: 'közepes'},
+        {level: '0.1 mg/l - 0.25 mg/l', value: 'súlyos'},
+        {level: '0.1 mg/l - 0.25 mg/l', value: 'igen súlyos'}
+      ],
+      blood: [
         {level: '0.1 mg/l alatt', value: 'az alkoholfogyasztás nem bizonyítható'},
         {level: '0.1 mg/l - 0.25 mg/l', value: 'ivott de alkoholosan nem befolyásolt'},
         {level: '0.1 mg/l - 0.25 mg/l', value: 'igen enyhe'},
@@ -55,6 +64,12 @@ export default {
         {level: '0.1 mg/l - 0.25 mg/l', value: 'súlyos'},
         {level: '0.1 mg/l - 0.25 mg/l', value: 'igen súlyos'}
       ]
+    }
+  },
+
+  computed: {
+    alcoholLevels () {
+      return this.content.content === 'legalkohol' ? this.airLevels : this.bloodLevels;
     }
   }
 }

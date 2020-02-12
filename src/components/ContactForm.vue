@@ -59,7 +59,7 @@
             </div>
           </div>
 
-          <div class="section-wrapper">
+          <!-- <div class="section-wrapper">
             <h2 class="form-title">Ittas vezetés elkövetésekor:</h2>
 
               <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
@@ -81,9 +81,9 @@
                 <span class="error-field">{{ errors[0] }}</span>
               </validation-provider>
 
-          </div>
+          </div> -->
 
-          <div class="seciont-wrapper">
+          <div class="section-wrapper">
             <h2 class="form-title">Alkoholszint mérésének módja:</h2>
             <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
               <input type="text" class="hidden" v-model="formData.sampleType">
@@ -132,12 +132,24 @@
               </div>
           </div>
 
-          <button type="submit" class="button-cta">KÜLDÉS</button>
-          <span v-if="failed">asasd</span>
+          <button type="submit" class="button-cta">
+            <span v-if="!isLoading">KÜLDÉS</span>
+            <span v-else class="spinner"></span>
+          </button>
+          <span v-if="failed" class="error-field" style="position:relative;">Kérem ellenőrizze, hogy minden kötelező mezőt kitöltött-e</span>
         </form>
       </ValidationObserver>
 
     </div>
+
+    <transition name="modal">
+      <modal
+        v-if="isModalVisible"
+        @close="isModalVisible = false"
+        :header-label="headerLabel"
+        :body-label="bodyLabel"
+      />
+    </transition>
   </div>  
 </template>
 <script>
@@ -147,6 +159,7 @@ import Car from '../assets/images/car.svg';
 import Accident from '../assets/images/accident.svg';
 import Breathalyzer from '../assets/images/breathalyzer.svg';
 import Syringe from '../assets/images/syringe.svg';
+import Modal from './Modal';
 
 export default {
   name: 'ContactForm',
@@ -155,7 +168,8 @@ export default {
     Car,
     Accident,
     Breathalyzer,
-    Syringe
+    Syringe,
+    Modal
   },
 
   data() {
@@ -180,7 +194,11 @@ export default {
         "2.51 g/l - 3.5 g/l",
         "3.5 g/l fölött"
       ],
-      formData: this.defaultData()
+      formData: this.defaultData(),
+      isModalVisible: false,
+      headerLabel: 'Sikeres üzenetküldés',
+      bodyLabel: 'Hamarosan keresni fogom!',
+      isLoading: false
     }
   },
 
@@ -217,12 +235,27 @@ export default {
       const params = new URLSearchParams();
       params.append('nev', this.formData.name);
       params.append('email', this.formData.email);
-      params.append('message', this.formData.message);
-      params.append('targy', this.formData.accident);
+      params.append('uzenet', this.formData.message);
+      params.append('meres-modja', this.formData.sampleType);
+      params.append('alkohol-szint', this.formData.bloodLevel);
       params.append('telefonszam', this.formData.phone);
+
+      this.isLoading = true;
       const [error, response] = await to(axios.post('https://script.google.com/macros/s/AKfycbyxpAXofHS1ffzYe6_DMwAdoxkpQfZ7PO1UfVmm-pVXDt2II_Yf/exec', params));
+      this.isLoading = false;
+
       this.formData = this.defaultData();
       this.$refs.observer.reset();
+
+      if (error) {
+        this.headerLabel = 'Sikertelen üzenetküldés';
+        this.bodyLabel = 'Váratlan hiba miatt nem sikerült az üzenetküldés, kérem próbáljon meg emailben vagy telefonon felkeresni';
+        this.isModalVisible = true;
+        return;
+      }
+
+      this.isModalVisible = true;
+
     }
   }
 }
@@ -237,6 +270,26 @@ export default {
   .button-cta {
     background-color: #C54552;
     color: #fff;
+
+    .spinner {
+      content: " ";
+      display: block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+  }
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -299,7 +352,12 @@ h1 {
     min-height: 100px;
   }
 
-  .error-field {
+  input.hidden {
+    display: none;
+  }
+}
+
+.error-field {
     position: absolute;
     bottom: -22px;
     left: 7px;
@@ -308,11 +366,6 @@ h1 {
     font-weight: 700;
     text-transform: uppercase;
   }
-
-  input.hidden {
-    display: none;
-  }
-}
 
 .touch-wrapper-column {
   flex-direction: column;
