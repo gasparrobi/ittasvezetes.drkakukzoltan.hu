@@ -3,8 +3,8 @@
     <div class="section">
       <div class="section-inner">
         <div class="intro">
-          <h2 class="title">Miért válasszon minket</h2>
-          <p>Közel 7 év jogi elméleti és gyakorlati tapasztalattal rendelkezünk ittas járművezetéses büntetőügyekben. A praxisom kiemelt szakterületét képezi az ittas járművezetés, így Ügyfélként ön őszinte, naprakész, közérthető tájékoztatást kaphat minden felmerülő kérdésére. Az ügyfélközpontúság jegyében mi azt nyújtjuk Ügyfeleink részére, amit fordított esetben mi is elvárnánk!</p>
+          <h2 class="title">Miért válasszon engem?</h2>
+          <p>Közel 7 év gyakorlati tapasztalattal rendelkezem ittas vezetés miatt indult büntetőügyekben, így Ügyfélként - ismerve 2020. évében is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető tájékoztatást kaphat valamennyi felmerülő kérdésére. Az ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi szolgáltatást nyújtok, amelyet fordított esetben én is elvárnék. Így érhető el az Ügyfél-ügyvéd közötti kellő bizalom, mely lehetővé teszi, hogy színvonalas szakmai munka mellett akár olyan eredmény születhessen, amely az Ügyfél érdekének maximálisan megfelel. Ne feledje: az Ön érdeke, az én érdekem is.</p>
         </div>
 
 

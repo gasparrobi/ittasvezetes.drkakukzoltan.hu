@@ -7,7 +7,7 @@
           <p>Dr. Kakuk Zoltán Dániel</p>
         </div>
         <div class="intro">
-          <h2 class="title">Miért válasszon engem</h2>
+          <h2 class="title">Miért válasszon engem?</h2>
           <p>Közel 7 év gyakorlati tapasztalattal rendelkezem ittas vezetés miatt indult büntetőügyekben, így Ügyfélként - ismerve 2020. évében is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető tájékoztatást kaphat valamennyi felmerülő kérdésére. Az ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi szolgáltatást nyújtok, amelyet fordított esetben én is elvárnék. Így érhető el az Ügyfél-ügyvéd közötti kellő bizalom, mely lehetővé teszi, hogy színvonalas szakmai munka mellett akár olyan eredmény születhessen, amely az Ügyfél érdekének maximálisan megfelel. Ne feledje: az Ön érdeke, az én érdekem is.</p>
         </div>
       </div>

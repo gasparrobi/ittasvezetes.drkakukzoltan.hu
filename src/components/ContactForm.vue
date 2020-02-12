@@ -19,7 +19,6 @@
                 <div class="touch-wrapper" name="name">
                   <input
                     type="text"
-                    :class="[{ 'invalid': failed }]"
                     v-model="formData.name"
                     placeholder="pl: Kovács Péter"
                   >

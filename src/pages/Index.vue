@@ -121,7 +121,8 @@
           title
           content,
           slug,
-          type
+          type,
+          id
         }
       }
     }
@@ -186,15 +187,16 @@ export default {
   computed: {
     ittasContent () {
       return this.$page.content.edges.map(edge => {
-        const { title, content, slug, type } = edge.node;
+        const { title, content, slug, type, id } = edge.node;
         return {
+          id,
           title,
           content,
           slug,
           type,
           component: this.getComponent(type)
         }
-      }).reverse();
+      }).reverse()
     },
   },
 
