@@ -69,6 +69,12 @@ export default {
   }
 }
 
+.content p li {
+  position: relative;
+  margin: 3px 0;
+  display: none;
+}
+
 .title {
   color: #2C3E50;
   text-transform: uppercase;

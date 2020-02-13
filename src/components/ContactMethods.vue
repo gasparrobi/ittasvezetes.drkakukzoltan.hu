@@ -17,7 +17,7 @@
         </div>
         <div class="box">
           <h2 class="description">Írjon email-t</h2>
-          <p><a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a></p>
+          <p><a href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm">iroda@drkakukzoltan.hu</a></p>
         </div>
       </div>
     </div>

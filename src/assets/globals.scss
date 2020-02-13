@@ -18,3 +18,20 @@ $breakpoints: (
   }
 }
 
+.content p li {
+  position: relative;
+  margin: 14px 0;
+  padding-left: 20px;
+
+  &:before {
+    position: absolute;
+    content: " ";
+    width: 10px;
+    height: 10px;
+    border: 3px solid #C54552;;
+    border-radius: 50%;
+    left: 2px;
+    top: 5px;
+  }
+}
+

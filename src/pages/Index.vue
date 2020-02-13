@@ -34,7 +34,7 @@
       <div class="section-inner">
         <div class="contact-wrapper">
           <email />
-          <a href="mailto:iroda@drkakukzoltan.hu">iroda@drkakukzoltan.hu</a>
+          <a href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm">iroda@drkakukzoltan.hu</a>
         </div>
         <div class="contact-wrapper">
           <phone />
@@ -95,6 +95,8 @@
         </p>
       </div>
     </div>
+
+    <media />
 
     <introduction1 @cta-click="onCtaClick" />
     <introduction-mobile @cta-click="onCtaClick" />
@@ -165,6 +167,7 @@ import ContactMethods from "../components/ContactMethods";
 import ContactForm from "../components/ContactForm";
 import Email from "../assets/images/email.svg";
 import Phone from "../assets/images/phone.svg";
+import Media from "../components/Media";
 import { scrollTo } from "../utils/index";
 
 const OBSERVER_OPTIONS = {
@@ -191,6 +194,7 @@ export default {
     ContactForm,
     Email,
     Phone,
+    Media,
     ContactMap: () =>
       import("../components/ContactMap")
         .then(ContactMap => ContactMap)
