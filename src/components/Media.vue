@@ -2,31 +2,27 @@
   <div class="section">
     <div class="section-inner">
       <div class="title media-title">Médiamegjelenések</div>
-      <a class="images-wrapper" href="https://drkakukzoltan.hu/mediamegjelenesek" target="_blank" rel="noopener">
-        <div
-          class="image"
-        >
+      <a
+        class="images-wrapper"
+        href="https://drkakukzoltan.hu/mediamegjelenesek"
+        @click="$emit('media-click')"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="image">
           <g-image src="~/assets/images/logo_rtl.png" alt="rtl klub logo" />
         </div>
-        <div
-          class="image"
-        >
-          <g-image src="~/assets/images/logo_tv2.png" alt="tv2 logo"/>
+        <div class="image">
+          <g-image src="~/assets/images/logo_tv2.png" alt="tv2 logo" />
         </div>
-        <div
-          class="image"
-        >
-          <g-image src="~/assets/images/logo_24hu.png" alt="24.hu logo"/>
+        <div class="image">
+          <g-image src="~/assets/images/logo_24hu.png" alt="24.hu logo" />
         </div>
-        <div
-          class="image"
-        >
-          <g-image src="~/assets/images/logo_hvg.png" alt="hvg.hu logo"/>
+        <div class="image">
+          <g-image src="~/assets/images/logo_hvg.png" alt="hvg.hu logo" />
         </div>
-        <div
-          class="image"
-        >
-          <g-image src="~/assets/images/logo_blikk.png" alt="blikk logo"/>
+        <div class="image">
+          <g-image src="~/assets/images/logo_blikk.png" alt="blikk logo" />
         </div>
       </a>
     </div>
@@ -34,14 +30,20 @@
 </template>
 <script>
 export default {
-  name: 'Media',
+  name: "Media",
 
-  data () {
+  data() {
     return {
-      logos: ['logo_rtl.png', 'logo_tv2.png', 'logo_24.png', 'logo_hvg.png', 'logo_blikk.png']
-    }
-  } 
-}
+      logos: [
+        "logo_rtl.png",
+        "logo_tv2.png",
+        "logo_24.png",
+        "logo_hvg.png",
+        "logo_blikk.png"
+      ]
+    };
+  }
+};
 </script>
 <style lang="scss" scoped>
 .section {

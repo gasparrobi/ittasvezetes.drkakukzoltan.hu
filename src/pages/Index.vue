@@ -34,7 +34,9 @@
       <div class="section-inner">
         <div class="contact-wrapper">
           <email />
-          <a href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm">iroda@drkakukzoltan.hu</a>
+          <a
+            href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm"
+          >iroda@drkakukzoltan.hu</a>
         </div>
         <div class="contact-wrapper">
           <phone />
@@ -96,7 +98,7 @@
       </div>
     </div>
 
-    <media />
+    <media @media-click="onMediaClick" />
 
     <introduction1 @cta-click="onCtaClick" />
     <introduction-mobile @cta-click="onCtaClick" />
@@ -307,6 +309,14 @@ export default {
           });
           this.observer.unobserve(entry.target);
         }
+      });
+    },
+
+    onMediaClick() {
+      this.sendEvent({
+        event_category: "outbound",
+        action: "",
+        event_label: "https://drkakukzoltan.hu/mediamegjelenesek"
       });
     },
 
