@@ -1,27 +1,44 @@
 <template>
-<div class="section-wrapper">
+  <div class="section-wrapper">
     <div class="section">
       <div class="section-inner">
         <div class="intro">
           <h2 class="title">Miért válasszon engem?</h2>
-          <p>Közel 7 év gyakorlati tapasztalattal rendelkezem ittas vezetés miatt indult büntetőügyekben, így Ügyfélként - ismerve 2020. évében is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető tájékoztatást kaphat valamennyi felmerülő kérdésére. Az ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi szolgáltatást nyújtok, amelyet fordított esetben én is elvárnék. Így érhető el az Ügyfél-ügyvéd közötti kellő bizalom, mely lehetővé teszi, hogy színvonalas szakmai munka mellett akár olyan eredmény születhessen, amely az Ügyfél érdekének maximálisan megfelel. Ne feledje: az Ön érdeke, az én érdekem is.</p>
+          <p>
+            Több mint 8 év gyakorlati tapasztalattal rendelkezem ittas vezetés
+            miatt indult büntetőügyekben, így Ügyfélként - ismerve 2021. évében
+            is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető
+            tájékoztatást kaphat valamennyi felmerülő kérdésére. Az
+            ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi
+            szolgáltatást nyújtok, amelyet fordított esetben én is elvárnék. Így
+            érhető el az Ügyfél-ügyvéd közötti kellő bizalom, mely lehetővé
+            teszi, hogy színvonalas szakmai munka mellett akár olyan eredmény
+            születhessen, amely az Ügyfél érdekének maximálisan megfelel. Ne
+            feledje: az Ön érdeke, az én érdekem is.
+          </p>
         </div>
-
 
         <div class="intro-image">
           <h3>Az ön ügyvédje</h3>
           <p>Dr. Kakuk Zoltán Dániel</p>
-          <img class="person" src="~../assets/images/drkakukzoltan.jpg" alt="Dr. Kakuk Zoltán Dániel - ittas vezetés ügyvéd" />
+          <img
+            class="person"
+            src="~../assets/images/drkakukzoltan.jpg"
+            alt="Dr. Kakuk Zoltán Dániel - ittas vezetés ügyvéd"
+          />
         </div>
-
       </div>
     </div>
 
     <div class="section section-red">
       <div class="section-inner">
         <div class="cta-wrapper">
-          <h2 class="cta-title">vezetői engedélye érdekében ne késlekedjen ügyvédhez fordulni!</h2>
-          <button type="button" class="button-cta" @click="$emit('cta-click')">konzultációt kérek</button>
+          <h2 class="cta-title">
+            vezetői engedélye érdekében ne késlekedjen ügyvédhez fordulni!
+          </h2>
+          <button type="button" class="button-cta" @click="$emit('cta-click')">
+            konzultációt kérek
+          </button>
         </div>
       </div>
     </div>
@@ -33,13 +50,10 @@ export default {
 
   data() {
     return {
-      content: {
-
-      }
-    }
+      content: {}
+    };
   }
-    
-}
+};
 </script>
 <style lang="scss" scoped>
 .section {
@@ -69,7 +83,7 @@ export default {
   }
 
   h3 {
-    color: #E04F5D;
+    color: #e04f5d;
     font-weight: 800;
     font-size: 22px;
     line-height: 27px;
@@ -81,14 +95,14 @@ export default {
     font-weight: 800;
     font-size: 15px;
     line-height: 18px;
-    color: #2C3E50;
+    color: #2c3e50;
     text-transform: uppercase;
     margin: 10px;
   }
 }
 
 .title {
-  color: #2C3E50;
+  color: #2c3e50;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 18px;
@@ -105,8 +119,8 @@ export default {
     margin-top: 2px;
     width: 85px;
     height: 3px;
-    background: #C54552;
-    transition: width .3s;
+    background: #c54552;
+    transition: width 0.3s;
   }
 
   .content--animate & {
@@ -118,7 +132,7 @@ p {
   margin-top: 15px;
   font-weight: 500;
   font-size: 15px;
-  color: #2C3E50;
+  color: #2c3e50;
 
   .content--animate & {
     animation: animateColor 1000ms forwards;
@@ -128,7 +142,6 @@ p {
     font-size: 14px;
   }
 }
-
 
 .cta-wrapper {
   display: flex;

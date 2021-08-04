@@ -8,7 +8,18 @@
         </div>
         <div class="intro">
           <h2 class="title">Miért válasszon engem?</h2>
-          <p>Közel 7 év gyakorlati tapasztalattal rendelkezem ittas vezetés miatt indult büntetőügyekben, így Ügyfélként - ismerve 2020. évében is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető tájékoztatást kaphat valamennyi felmerülő kérdésére. Az ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi szolgáltatást nyújtok, amelyet fordított esetben én is elvárnék. Így érhető el az Ügyfél-ügyvéd közötti kellő bizalom, mely lehetővé teszi, hogy színvonalas szakmai munka mellett akár olyan eredmény születhessen, amely az Ügyfél érdekének maximálisan megfelel. Ne feledje: az Ön érdeke, az én érdekem is.</p>
+          <p>
+            Több mint 8 év gyakorlati tapasztalattal rendelkezem ittas vezetés
+            miatt indult büntetőügyekben, így Ügyfélként - ismerve 2021. évében
+            is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető
+            tájékoztatást kaphat valamennyi felmerülő kérdésére. Az
+            ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi
+            szolgáltatást nyújtok, amelyet fordított esetben én is elvárnék. Így
+            érhető el az Ügyfél-ügyvéd közötti kellő bizalom, mely lehetővé
+            teszi, hogy színvonalas szakmai munka mellett akár olyan eredmény
+            születhessen, amely az Ügyfél érdekének maximálisan megfelel. Ne
+            feledje: az Ön érdeke, az én érdekem is.
+          </p>
         </div>
       </div>
     </div>
@@ -17,12 +28,21 @@
       <div class="section-inner">
         <div class="empty empty--middle">
           <div class="block">
-            <img class="person" src="~../assets/images/drkakukzoltan.jpg" width="275" alt="Dr. Kakuk Zoltán Dániel - ittas vezetés ügyvéd" />
+            <img
+              class="person"
+              src="~../assets/images/drkakukzoltan.jpg"
+              width="275"
+              alt="Dr. Kakuk Zoltán Dániel - ittas vezetés ügyvéd"
+            />
           </div>
         </div>
         <div class="cta-wrapper">
-          <h2 class="cta-title">vezetői engedélye érdekében ne késlekedjen ügyvédhez fordulni!</h2>
-          <button type="button" class="button-cta" @click="$emit('cta-click')">konzultációt kérek</button>
+          <h2 class="cta-title">
+            vezetői engedélye érdekében ne késlekedjen ügyvédhez fordulni!
+          </h2>
+          <button type="button" class="button-cta" @click="$emit('cta-click')">
+            konzultációt kérek
+          </button>
         </div>
       </div>
     </div>
@@ -31,12 +51,15 @@
       <div class="section-inner">
         <div class="empty empty--bottom">
           <a href="tel:+36304322665">+36 30 432 2665</a>
-          <a href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm">iroda@drkakukzoltan.hu</a>
+          <a
+            href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm"
+            >iroda@drkakukzoltan.hu</a
+          >
         </div>
         <div class="box-wrapper">
           <div class="box">
             <tapasztalat />
-            <span>Közel 7 év tapasztalat</span>
+            <span>Több mint 8 év tapasztalat</span>
           </div>
           <div class="box">
             <szakertelem />
@@ -65,8 +88,7 @@ export default {
     Szakertelem,
     Tajekoztatas
   }
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -87,7 +109,7 @@ export default {
 
 .section-red {
   min-height: 300px;
-  background-color: #C54552;
+  background-color: #c54552;
   color: #fff;
 
   .section-inner {
@@ -107,13 +129,13 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   & * {
     z-index: 2;
   }
 
   h3 {
-    color: #E04F5D;
+    color: #e04f5d;
     font-weight: 800;
     font-size: 22px;
     line-height: 27px;
@@ -124,10 +146,10 @@ export default {
     font-weight: 800;
     font-size: 15px;
     line-height: 18px;
-    color: #2C3E50;
+    color: #2c3e50;
     text-transform: uppercase;
   }
-  
+
   &:before {
     content: '';
     position: absolute;
@@ -162,7 +184,7 @@ export default {
       text-align: center;
       text-decoration-line: underline;
       text-transform: uppercase;
-      color: #2C3E50;
+      color: #2c3e50;
 
       &:nth-of-type(2) {
         font-size: 16px;
@@ -171,7 +193,7 @@ export default {
 
     &:before {
       border-top: none;
-      box-shadow: 0px 15px 22px 2px rgba(0,0,0,.1)
+      box-shadow: 0px 15px 22px 2px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -212,7 +234,7 @@ export default {
 }
 
 .title {
-  color: #2C3E50;
+  color: #2c3e50;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 18px;
@@ -229,8 +251,8 @@ export default {
     margin-top: 2px;
     width: 85px;
     height: 3px;
-    background: #C54552;
-    transition: width .3s;
+    background: #c54552;
+    transition: width 0.3s;
   }
 
   .content--animate & {
@@ -242,7 +264,7 @@ p {
   margin-top: 15px;
   font-weight: 500;
   font-size: 15px;
-  color: #2C3E50;
+  color: #2c3e50;
 
   .content--animate & {
     animation: animateColor 1000ms forwards;
@@ -278,15 +300,15 @@ p {
     font-weight: 800;
     font-size: 16px;
     line-height: 26px;
-    color: #2C3E50;
-    box-shadow: 0px 15px 22px 2px rgba(0,0,0,.1);
+    color: #2c3e50;
+    box-shadow: 0px 15px 22px 2px rgba(0, 0, 0, 0.1);
 
     svg {
       height: 40px;
       margin-bottom: 15px;
     }
 
-    & ~.box {
+    & ~ .box {
       margin-left: 10px;
 
       @include break(tablet) {
@@ -305,9 +327,6 @@ p {
     @include break(mobile) {
       display: none;
     }
-    
   }
 }
-
-
 </style>
