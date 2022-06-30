@@ -14,7 +14,7 @@
     "axios": "^0.19.2",
     "gridsome": "^0.7.0",
     "intersection-observer": "^0.7.0",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "typeface-montserrat": "0.0.75",
     "typeface-open-sans": "0.0.75",
