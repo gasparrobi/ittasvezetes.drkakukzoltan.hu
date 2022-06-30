@@ -1,102 +1,95 @@
 <template>
   <div class="section" id="konzultacio-adatlap" data-observe="observe">
     <div class="section-inner">
-
-      <h1 class="title">Konzultációhoz kérem töltse ki az alábbi adatlapot</h1>
-
-      <!-- <validation-provider rules="required" v-slot="{ errors }">
-        <input v-model="value" name="myinput" type="text" />
-        <span>{{ errors[0] }}</span>
-      </validation-provider> -->
+      <h2 class="title">Konzultációhoz kérem töltse ki az alábbi adatlapot</h2>
 
       <ValidationObserver ref="observer">
         <form @submit.prevent="onSubmit">
-          
           <div class="section-horizontal">
             <div class="section-wrapper">
               <h2 class="form-title">Név</h2>
 
-                <div class="touch-wrapper" name="name">
-                  <input
-                    type="text"
-                    v-model="formData.name"
-                    placeholder="pl: Kovács Péter"
-                  >
-                </div>
-
+              <div class="touch-wrapper" name="name">
+                <input
+                  type="text"
+                  v-model="formData.name"
+                  placeholder="pl: Kovács Péter"
+                />
+              </div>
             </div>
 
             <div class="section-wrapper">
               <h2 class="form-title">E-mail cím</h2>
 
-                <validation-provider class="touch-wrapper" mode="lazy" name="email" v-slot="{ errors, failed }">
-                  <input
-                    type="email"
-                    :class="[{ 'invalid': failed }]"
-                    v-model="formData.email"
-                    placeholder="pl: kovacspeter@gmail.com"
-                  >
-                  <span class="error-field">{{ errors[0] }}</span>
-                </validation-provider>
-
+              <validation-provider
+                class="touch-wrapper"
+                mode="lazy"
+                name="email"
+                v-slot="{ errors, failed }"
+              >
+                <input
+                  type="email"
+                  :class="[{ invalid: failed }]"
+                  v-model="formData.email"
+                  placeholder="pl: kovacspeter@gmail.com"
+                />
+                <span class="error-field">{{ errors[0] }}</span>
+              </validation-provider>
             </div>
-            
+
             <div class="section-wrapper">
               <h2 class="form-title">Telefonszám*</h2>
 
-                <validation-provider class="touch-wrapper" mode="lazy" name="phone" rules="required" v-slot="{ errors, failed }">
-                  <input
-                    type="phone"
-                    :class="[{ 'invalid': failed }]"
-                    v-model="formData.phone"
-                    placeholder="pl: 063012345678"
-                  >
-                  <span class="error-field">{{ errors[0] }}</span>
-                </validation-provider>
-
+              <validation-provider
+                class="touch-wrapper"
+                mode="lazy"
+                name="phone"
+                rules="required"
+                v-slot="{ errors, failed }"
+              >
+                <input
+                  type="phone"
+                  :class="[{ invalid: failed }]"
+                  v-model="formData.phone"
+                  placeholder="pl: 063012345678"
+                />
+                <span class="error-field">{{ errors[0] }}</span>
+              </validation-provider>
             </div>
           </div>
 
-          <!-- <div class="section-wrapper">
-            <h2 class="form-title">Ittas vezetés elkövetésekor:</h2>
-
-              <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
-                <input type="text" class="hidden" v-model="formData.accident">
-                <div 
-                  :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.accident === 'accident' }]"
-                  @click="formData.accident = 'accident'"
-                >
-                  <car class="svg-icon"/>
-                  <span>nem történt baleset / sérülés</span>
-                </div>
-                <div
-                  :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.accident === 'no accident' }]"
-                  @click="formData.accident = 'no accident'"
-                >
-                  <accident class="svg-icon"/>
-                  <span>Történt baleset / sérülés</span>
-                </div>
-                <span class="error-field">{{ errors[0] }}</span>
-              </validation-provider>
-
-          </div> -->
-
           <div class="section-wrapper">
             <h2 class="form-title">Alkoholszint mérésének módja*</h2>
-            <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
-              <input type="text" class="hidden" v-model="formData.sampleType">
-              <div 
-                :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.sampleType === 'szonda' }]"
+            <validation-provider
+              class="touch-wrapper"
+              rules="required"
+              v-slot="{ errors, failed }"
+            >
+              <input type="text" class="hidden" v-model="formData.sampleType" />
+              <div
+                :class="[
+                  'touch',
+                  {
+                    'touch-invalid': failed,
+                    'touch-selected': formData.sampleType === 'szonda'
+                  }
+                ]"
                 @click="formData.sampleType = 'szonda'"
               >
-                <breathalyzer class="svg-icon"/>
+                <breathalyzer class="svg-icon" />
                 <span>csak szondáztatás</span>
               </div>
-              <div 
-                :class="['touch', { 'touch-invalid': failed, 'touch-selected': formData.sampleType === 'ver-vizelet' }]"
+              <div
+                :class="[
+                  'touch',
+                  {
+                    'touch-invalid': failed,
+                    'touch-selected': formData.sampleType === 'ver-vizelet'
+                  }
+                ]"
                 @click="formData.sampleType = 'ver-vizelet'"
               >
-                <syringe class="svg-icon"/>
+                <syringe class="svg-icon" />
                 <span>vér / vizelet vétel</span>
               </div>
               <span class="error-field">{{ errors[0] }}</span>
@@ -105,12 +98,23 @@
 
           <div class="section-wrapper">
             <h2 class="form-title">{{ alcoholTitle }}*</h2>
-            <validation-provider class="touch-wrapper" rules="required" v-slot="{ errors, failed }">
-              <input type="text" class="hidden" v-model="formData.bloodLevel">
+            <validation-provider
+              class="touch-wrapper"
+              rules="required"
+              v-slot="{ errors, failed }"
+            >
+              <input type="text" class="hidden" v-model="formData.bloodLevel" />
               <div
                 v-for="item in alcoholValues"
                 :key="item"
-                :class="['touch', 'touch-mini', { 'touch-invalid': failed, 'touch-selected': formData.bloodLevel === item }]"
+                :class="[
+                  'touch',
+                  'touch-mini',
+                  {
+                    'touch-invalid': failed,
+                    'touch-selected': formData.bloodLevel === item
+                  }
+                ]"
                 @click="formData.bloodLevel = item"
               >
                 <span>{{ item }}</span>
@@ -121,13 +125,13 @@
 
           <div class="section-wrapper">
             <h2 class="form-title">Üzenet</h2>
-              <div class="touch-wrapper">
-                <textarea
-                  type="text"
-                  v-model="formData.message"
-                  placeholder="Ide írja üzenetét"
-                />
-              </div>
+            <div class="touch-wrapper">
+              <textarea
+                type="text"
+                v-model="formData.message"
+                placeholder="Ide írja üzenetét"
+              />
+            </div>
           </div>
 
           <button type="submit" class="button-cta">
@@ -135,10 +139,24 @@
             <span v-else class="spinner"></span>
           </button>
 
-          <span class="gdpr" style="position:relative;">Jelen üzenetem megküldésével egyidejűleg az Általános Adatvédelmi Rendelet (GDPR) 6. cikk (1) bekezdés a) pontja, továbbá a 7. cikk rendelkezése alapján - tudomásul veszem, hogy az adatkezelő, azaz dr. Kakuk Zoltán Dániel ügyvéd a most - önkéntesen - megadott személyes adataimat a GDPR és az Infotv. vonatkozó és releváns feltételei szerint, jelen jogi szolgáltatás céljaival összefüggésben, kizárólag a kapcsolatfelvétel megkönnyítése érdekében kezeli. Az űrlap kitöltése az érintettek azonosítását harmadik fél számára nem teszi lehetővé, a fenti adatok megismerésére kizárólag az adatkezelő jogosult, a személyes adatok biztonsága technikai intézkedések alkalmazásával megfelelően biztosítva van. Az űrlap beküldésével egyidejűleg tudomásul veszem, hogy a személyes adataim kezelését az adatkezelő felé jelzett írásos bejelentésemmel visszavonhatom.</span>
+          <span class="gdpr" style="position:relative;"
+            >Jelen üzenetem megküldésével egyidejűleg az Általános Adatvédelmi
+            Rendelet (GDPR) 6. cikk (1) bekezdés a) pontja, továbbá a 7. cikk
+            rendelkezése alapján - tudomásul veszem, hogy az adatkezelő, azaz
+            dr. Kakuk Zoltán Dániel ügyvéd a most - önkéntesen - megadott
+            személyes adataimat a GDPR és az Infotv. vonatkozó és releváns
+            feltételei szerint, jelen jogi szolgáltatás céljaival
+            összefüggésben, kizárólag a kapcsolatfelvétel megkönnyítése
+            érdekében kezeli. Az űrlap kitöltése az érintettek azonosítását
+            harmadik fél számára nem teszi lehetővé, a fenti adatok
+            megismerésére kizárólag az adatkezelő jogosult, a személyes adatok
+            biztonsága technikai intézkedések alkalmazásával megfelelően
+            biztosítva van. Az űrlap beküldésével egyidejűleg tudomásul veszem,
+            hogy a személyes adataim kezelését az adatkezelő felé jelzett írásos
+            bejelentésemmel visszavonhatom.</span
+          >
         </form>
       </ValidationObserver>
-
     </div>
 
     <transition name="modal">
@@ -149,7 +167,7 @@
         :body-label="bodyLabel"
       />
     </transition>
-  </div>  
+  </div>
 </template>
 <script>
 import axios from 'axios';
@@ -174,45 +192,49 @@ export default {
   data() {
     return {
       airAlcoholValues: [
-        "nem tudom",
-        "0.1 mg/l alatt",
-        "0.11 mg/l - 0.25 mg/l",
-        "0.26 mg/l - 0.4 mg/l",
-        "0.41 mg/l - 0.75 mg/l",
-        "0.76 mg/l - 1.25 mg/l",
-        "1.26 mg/l - 1.75 mg/l",
-        "1.76 mg/l fölött"
+        'nem tudom',
+        '0.1 mg/l alatt',
+        '0.11 mg/l - 0.25 mg/l',
+        '0.26 mg/l - 0.4 mg/l',
+        '0.41 mg/l - 0.75 mg/l',
+        '0.76 mg/l - 1.25 mg/l',
+        '1.26 mg/l - 1.75 mg/l',
+        '1.76 mg/l fölött'
       ],
       bloodAlcoholValues: [
-        "nem tudom",
-        "0.2 g/l alatt",
-        "0.21 g/l - 0.5 g/l",
-        "0.51 g/l - 0.8 g/l",
-        "0.81 g/l - 1.5 g/l",
-        "1.51 g/l - 2.5 g/l",
-        "2.51 g/l - 3.5 g/l",
-        "3.5 g/l fölött"
+        'nem tudom',
+        '0.2 g/l alatt',
+        '0.21 g/l - 0.5 g/l',
+        '0.51 g/l - 0.8 g/l',
+        '0.81 g/l - 1.5 g/l',
+        '1.51 g/l - 2.5 g/l',
+        '2.51 g/l - 3.5 g/l',
+        '3.5 g/l fölött'
       ],
       formData: this.defaultData(),
       isModalVisible: false,
       headerLabel: 'Sikeres üzenetküldés',
       bodyLabel: 'Hamarosan keresni fogom!',
       isLoading: false
-    }
+    };
   },
 
   computed: {
     alcoholValues() {
-      return this.formData.sampleType === 'szonda' ? this.airAlcoholValues : this.bloodAlcoholValues;
+      return this.formData.sampleType === 'szonda'
+        ? this.airAlcoholValues
+        : this.bloodAlcoholValues;
     },
 
-    alcoholTitle () {
-      return this.formData.sampleType === 'szonda' ? 'Légalkoholszint értéke' : 'Véralkoholszint értéke'
+    alcoholTitle() {
+      return this.formData.sampleType === 'szonda'
+        ? 'Légalkoholszint értéke'
+        : 'Véralkoholszint értéke';
     }
   },
 
   methods: {
-    defaultData () {
+    defaultData() {
       return {
         name: '',
         email: '',
@@ -221,7 +243,7 @@ export default {
         sampleType: '',
         bloodLevel: '',
         message: ''
-      }
+      };
     },
 
     async onSubmit() {
@@ -229,8 +251,6 @@ export default {
       const result = await this.$refs.observer.validate();
       if (!result) return;
 
-      
-      
       const params = new URLSearchParams();
       params.append('nev', this.formData.name);
       params.append('email', this.formData.email);
@@ -240,7 +260,12 @@ export default {
       params.append('telefonszam', this.formData.phone);
 
       this.isLoading = true;
-      const [error, response] = await to(axios.post('https://script.google.com/a/drkakukzoltan.hu/macros/s/AKfycbxJ_zOuqa8ZpPYszmqrjVXvgAWJcfX5-L5gzMdl/exec', params));
+      const [error, response] = await to(
+        axios.post(
+          'https://script.google.com/a/drkakukzoltan.hu/macros/s/AKfycbxJ_zOuqa8ZpPYszmqrjVXvgAWJcfX5-L5gzMdl/exec',
+          params
+        )
+      );
       this.isLoading = false;
 
       this.formData = this.defaultData();
@@ -248,30 +273,30 @@ export default {
 
       if (error) {
         this.headerLabel = 'Sikertelen üzenetküldés';
-        this.bodyLabel = 'Váratlan hiba miatt nem sikerült az üzenetküldés, kérem próbáljon meg emailben vagy telefonon felkeresni';
+        this.bodyLabel =
+          'Váratlan hiba miatt nem sikerült az üzenetküldés, kérem próbáljon meg emailben vagy telefonon felkeresni';
         this.isModalVisible = true;
         return;
       }
 
       this.isModalVisible = true;
-
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-.section {
+#konzultacio-adatlap {
   background: #fff;
   padding-top: 60px;
   padding-bottom: 60px;
   margin: 30px 0;
 
   .button-cta {
-    background-color: #C54552;
+    background-color: #c54552;
     color: #fff;
 
     .spinner {
-      content: " ";
+      content: ' ';
       display: block;
       width: 24px;
       height: 24px;
@@ -298,7 +323,7 @@ export default {
   font-size: 11px;
 }
 
-h1 {
+h2 {
   margin-bottom: 20px;
 }
 
@@ -318,7 +343,7 @@ h1 {
 }
 
 .form-title {
-  color: #2C3E50;
+  color: #2c3e50;
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
@@ -335,9 +360,9 @@ h1 {
     width: 100%;
     max-width: 300px;
     height: 45px;
-    border: 2px solid #2C3E50;
+    border: 2px solid #2c3e50;
     padding: 5px 10px;
-    border-radius: 5px; 
+    border-radius: 5px;
 
     &::placeholder {
       font-size: 12px;
@@ -363,14 +388,14 @@ h1 {
 }
 
 .error-field {
-    position: absolute;
-    bottom: -22px;
-    left: 7px;
-    font-size: 11px;
-    color: red;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
+  position: absolute;
+  bottom: -22px;
+  left: 7px;
+  font-size: 11px;
+  color: red;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
 .touch-wrapper-column {
   flex-direction: column;
@@ -383,7 +408,7 @@ h1 {
   width: 141px;
   height: 120px;
   padding: 10px;
-  border: 2px solid #2C3E50;
+  border: 2px solid #2c3e50;
   border-radius: 5px;
   margin: 5px;
   font-size: 11px;
@@ -403,8 +428,8 @@ h1 {
 
   &-selected {
     color: #fff;
-    background-color: #C54552;
-    border: 2px solid #C54552;
+    background-color: #c54552;
+    border: 2px solid #c54552;
 
     span {
       color: #fff;
@@ -424,8 +449,8 @@ h1 {
   /* stroke: #7d72e0;
   color: #7d72e0; */
   color: #fff;
-  background-color: #C54552;
-  border: 2px solid #C54552;
+  background-color: #c54552;
+  border: 2px solid #c54552;
 
   span {
     color: #fff;
@@ -433,14 +458,14 @@ h1 {
 }
 
 .touch:hover .svg-icon {
-  fill: currentColor
+  fill: currentColor;
 }
 
 .touch.touch-selected {
   span {
     color: #fff;
-  } 
-  
+  }
+
   .svg-icon {
     fill: currentColor;
   }
@@ -451,19 +476,19 @@ h1 {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .svg-icon {
   /* max-width: 55px;
   width: 55px; */
   margin-bottom: 5px;
-  fill: #2C3E50;
+  fill: #2c3e50;
   min-height: 50px;
   max-height: 50px;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -484,7 +509,7 @@ input[type="checkbox"] {
   -ms-user-select: none;
   user-select: none;
   font-weight: 800;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 /* Create a custom checkbox */
@@ -501,17 +526,17 @@ input[type="checkbox"] {
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #C54552;
+  background-color: #c54552;
 }
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #C54552;
+  background-color: #c54552;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }

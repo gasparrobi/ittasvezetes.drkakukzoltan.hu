@@ -1,2 +1,5 @@
 User-agent: *
 Disallow:
+
+Sitemap: http://www.example.com/post-sitemap.xml
+Sitemap: http://www.example.com/page-sitemap.xml

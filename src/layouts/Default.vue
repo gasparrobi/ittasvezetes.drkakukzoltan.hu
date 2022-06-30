@@ -9,7 +9,7 @@
         <g-link class="nav__link" to="/about/">About</g-link>
       </nav>
     </header> -->
-    <slot/>
+    <div><slot></slot></div>
   </div>
 </template>
 
@@ -19,16 +19,16 @@
 }
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
   // font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   font-family: 'Montserrat', sans-serif;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   line-height: 1.5;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 
 .layout {
@@ -43,11 +43,11 @@ body {
   height: 80px;
 }
 
-.nav {
-  &__link {
-    margin-left: 20px;
-  }
-}
+// .nav {
+//   &__link {
+//     margin-left: 20px;
+//   }
+// }
 
 h1.main-title {
   font-weight: 800;

@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- Roller SECTION -->
     <div class="section section-hero">
       <div class="navigation">
         <a href="/" class="logo">
@@ -54,16 +54,6 @@
         </a>
         <nav class="menu">
           <ul>
-            <li>
-              <g-link to="/elektromos-roller-ittas-vezetes"
-                >elektromos roller</g-link
-              >
-            </li>
-            <li>
-              <a href="#" @click="scrollToItem('legalkoholszint-tablazat')"
-                >alkoholszint táblázat</a
-              >
-            </li>
             <li>
               <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener"
                 >egyéb bűncselekmények</a
@@ -79,12 +69,7 @@
       </div>
       <ClientOnly>
         <Slide right>
-          <g-link class="nav__link" to="/elektromos-roller-ittas-vezetes"
-            ><span>elektromos roller</span></g-link
-          >
-          <a href="#" @click="scrollToItem('legalkoholszint-tablazat')">
-            <span>alkoholszint táblázat</span>
-          </a>
+          <g-link class="nav__link" to="/"><span>főoldal</span></g-link>
           <a target="_blank" href="https://drkakukzoltan.hu" rel="noopener">
             <span>egyéb bűncselekmények</span>
           </a>
@@ -94,56 +79,20 @@
         </Slide>
       </ClientOnly>
       <div class="section-inner">
-        <h1 class="main-title">Ha ittas vezetés miatt ügyvédet keres</h1>
-        <h2 class="secondary-title">
+        <h1 class="main-title">
+          Ittas állapotban történő elektromos rollerezés akár pénzbüntetéssel és
+          járművezetéstől eltiltással is járhat.
+        </h1>
+        <!-- <h2 class="secondary-title">
           Szakszerű jogi képviselet!
           <br />Kérjen konzultációt még ma!
-        </h2>
-        <button type="button" class="button-cta" @click="onCtaClick">
-          konzultációt kérek
-        </button>
-        <p class="contact-secondary">
-          vagy keressen a
-          <a href="tel:+36304322665">+36 30 432 2665</a> számon
-        </p>
-      </div>
-    </div>
-
-    <media @media-click="onMediaClick" />
-
-    <introduction1 @cta-click="onCtaClick" />
-    <introduction-mobile @cta-click="onCtaClick" />
-
-    <!-- <div class="section">
-      <div class="section-inner">
-        <g-link class="nav__link" to="/elektromos-roller-ittas-vezetes"
-          >elektromos roller</g-link
-        >
-      </div>
-    </div> -->
-
-    <div class="section">
-      <div class="section-inner">
-        <div class="dyk-cta">
-          <div class="box">
-            <p>!</p>
-          </div>
-          <div class="flex-wrapper">
-            <h2 class="title">
-              Tudta!? Ittas állapotban történő elektromos rollerezés akár
-              pénzbüntetéssel és járművezetéstől eltiltással is járhat.
-            </h2>
-            <button type="button" class="button-cta" @click="">
-              <g-link to="/elektromos-roller-ittas-vezetes">részletek</g-link>
-            </button>
-          </div>
-        </div>
+        </h2> -->
       </div>
     </div>
 
     <!-- WHY CHOOSE US -->
     <component
-      v-for="item in ittasContent"
+      v-for="item in rollerContent"
       :key="item.id"
       :is="item.component"
       :content="item"
@@ -181,8 +130,8 @@
 </template>
 
 <page-query>
-  query content {
-    content: allContent(sortBy: "id", order: ASC) {
+  query roller {
+    roller: allRoller(sortBy: "id", order: ASC) {
       edges {
         node {
           title
@@ -217,10 +166,55 @@ const OBSERVER_OPTIONS = {
 };
 
 export default {
-  name: 'index',
+  name: 'Roller',
 
   metaInfo: {
-    title: 'Ittas vezetés ügyvéd'
+    title: 'Elektromos roller ittas állapotban',
+
+    meta: [
+      {
+        key: 'description',
+        name: 'description',
+        content:
+          'Az elektromos roller ittas vezetése miatt indult büntetőeljárás kimenetele számtalan körülménytől függ 2022-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is.'
+      },
+      {
+        key: 'og:title',
+        name: 'og:title',
+        content:
+          'Mire számíthatok elektromos roller ittas vezetése esetén? - dr. Kakuk Zoltán Dániel, ügyvéd'
+      },
+      {
+        key: 'og:description',
+        name: 'og:description',
+        content:
+          'Büntetőeljárás indult elektromos roller ittas vezetése miatt Önnel szemben? Ismerje meg a jogait és lehetőségeit, közérthető módon!'
+      },
+      {
+        key: 'og:type',
+        name: 'og:type',
+        content: 'website'
+      },
+      {
+        key: 'og:image',
+        name: 'og:image',
+        content: '/rollersocial.jpg'
+      },
+      {
+        key: 'og:url',
+        name: 'og:url',
+        content:
+          'https://ittasvezetes.drkakukzoltan.hu/elektromos-roller-ittas-vezetes'
+      },
+      {
+        key: 'og:locale',
+        name: 'og:locale',
+        content: 'hu_HU'
+      },
+      {
+        charset: 'utf-8'
+      }
+    ]
   },
 
   components: {
@@ -260,10 +254,9 @@ export default {
   },
 
   computed: {
-    ittasContent() {
-      if (!this.$page && !this.$page.content) return [];
-
-      return this.$page.content.edges.map((edge) => {
+    rollerContent() {
+      if (!this.$page && !this.$page.roller) return [];
+      return this.$page.roller.edges.map((edge) => {
         const { title, content, slug, type, id } = edge.node;
         return {
           id,
@@ -312,14 +305,11 @@ export default {
 
     getComponent(type) {
       switch (type) {
-        case 'content':
+        case 'rollerContent':
           return 'ittas-content';
           break;
         case 'callToAction':
           return 'call-to-action';
-          break;
-        case 'alkoholszint':
-          return 'alcohol-table';
           break;
         default:
           return 'template';
@@ -379,7 +369,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home-links a {
   margin-right: 1rem;
 }
@@ -403,6 +393,10 @@ export default {
 
     @include break(mobile) {
       padding: 20px;
+    }
+
+    .section-hero & {
+      flex-direction: row;
     }
   }
 
@@ -460,39 +454,16 @@ export default {
   }
 
   &-hero {
-    min-height: 600px;
+    min-height: 300px;
     background-image: linear-gradient(
         90deg,
         rgba(34, 47, 169, 0.83) 0%,
         rgba(187, 53, 66, 0.83) 100%
       ),
-      url('../assets/images/hero-img.webp');
+      url('../assets/images/ittasroller.webp');
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     position: relative;
-
-    .bm-menu {
-      background: #fff;
-    }
-
-    .bm-item-list > * > span {
-      color: #e04f5d;
-    }
-
-    .bm-burger-button.bm-burger-button.bm-burger-button {
-      display: none;
-      right: 20px !important;
-      top: 55px;
-      height: 25px;
-
-      @include break(phablet) {
-        display: block;
-      }
-    }
-
-    .bm-burger-bars {
-      background-color: #fff;
-    }
 
     .line-style {
       position: absolute;
@@ -586,35 +557,6 @@ export default {
     }
   }
 
-  .button-cta {
-    padding: 20px 30px;
-    display: flex;
-    width: 100%;
-    max-width: 380px;
-    align-items: center;
-    justify-content: center;
-    color: #e04f5d;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    text-transform: uppercase;
-    margin: 10px 0;
-    transition: all 200ms;
-    user-select: none;
-
-    @include break(mobile) {
-      font-size: 18px;
-      padding: 20px;
-    }
-
-    &:hover {
-      box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 1);
-    }
-  }
-
   p.contact-secondary {
     font-size: 14px;
     line-height: 20px;
@@ -632,7 +574,9 @@ export default {
   }
 
   .main-title {
+    font-size: 25px;
     margin-bottom: 25px;
+    text-align: center;
   }
 
   .secondary-title {
@@ -643,28 +587,135 @@ export default {
     }
   }
 }
+</style>
 
-.select-wrapper {
-  width: 100%;
-  max-width: 100vw;
-  background: #fff;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 20px 10px;
+<style lang="scss">
+.section {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px 40px;
+    margin: 0 auto;
+
+    @include break(mobile) {
+      padding: 20px;
+    }
+  }
+
+  &-red {
+    min-height: 210px;
+    background-color: #c54552;
+    color: #fff;
+  }
+
+  &-topnav {
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #4b4b4b;
+
+    .contact-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-right: 5px;
+        transform: scale(0.8);
+      }
+    }
+
+    .section-inner {
+      padding: 5px 40px;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      @include break(mobile) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-wrapper {
+        transition: all 200ms;
+
+        & ~ .contact-wrapper {
+          margin-left: 20px;
+
+          @include break(mobile) {
+            margin-left: 0;
+            margin-top: 3px;
+          }
+        }
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
 }
 
-select {
-  max-width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+.button-cta {
+  padding: 20px 30px;
+  display: flex;
+  width: 100%;
+  max-width: 380px;
+  align-items: center;
+  justify-content: center;
+  color: #e04f5d;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  transition: all 200ms;
+  user-select: none;
+
+  @include break(mobile) {
+    font-size: 18px;
+    padding: 20px;
+  }
+
+  &:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 1);
+  }
+}
+
+.bm-menu {
+  background: #fff;
+}
+
+.bm-item-list > * > span {
+  color: #e04f5d;
+}
+
+.bm-burger-button.bm-burger-button.bm-burger-button {
+  display: none;
+  right: 20px !important;
+  top: 55px;
+  height: 25px;
+
+  @include break(phablet) {
+    display: block;
+  }
+}
+
+.bm-burger-bars {
+  background-color: #fff;
 }
 
 .cta-wrapper {
@@ -733,82 +784,6 @@ p {
 
   @include break(mobile) {
     font-size: 14px;
-  }
-}
-
-.dyk-cta {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  width: 100%;
-  background-color: #c54552;
-  padding: 30px;
-  border-radius: 5px;
-
-  @include break(phablet) {
-    flex-direction: column;
-  }
-
-  .flex-wrapper {
-    display: flex;
-    align-items: center;
-
-    @include break(phablet) {
-      flex-direction: column;
-    }
-  }
-
-  .box {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    color: #c54552;
-    margin-right: 30px;
-
-    @include break(phablet) {
-      margin-right: 0;
-      margin-bottom: 20px;
-    }
-  }
-
-  .button-cta {
-    max-width: 200px;
-  }
-
-  .title {
-    color: #fff;
-
-    @include break(phablet) {
-      text-align: center;
-    }
-
-    &::after {
-      content: none;
-    }
-  }
-
-  p {
-    z-index: 2;
-    margin-top: 0;
-    font-size: 28px;
-    color: #c54552;
-    font-weight: 800;
-  }
-
-  .box::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    z-index: 1;
-    transform: rotate(45deg);
-    border-radius: 5px;
   }
 }
 </style>

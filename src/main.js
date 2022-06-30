@@ -30,32 +30,55 @@ export default function(Vue, { router, head, isClient }) {
     config: { id: 'UA-100816935-1' }
   });
 
-  head.meta.push({
-    name: 'og:title',
-    content:
-      'Mire számíthatok 2021-ben ha ittasan vezettem? - dr. Kakuk Zoltán Dániel, ügyvéd'
+  head.link.push({
+    key: 'canonical',
+    rel: 'canonical',
+    href: 'https://ittasvezetes.drkakukzoltan.hu'
   });
 
   head.meta.push({
+    key: 'og:title',
+    name: 'og:title',
+    content:
+      'Mire számíthatok 2022-ben ittas vezetés esetén? - dr. Kakuk Zoltán Dániel, ügyvéd'
+  });
+
+  head.meta.push({
+    key: 'og:description',
     name: 'og:description',
     content:
       'Büntetőeljárás indult ittas vezetés miatt Önnel szemben? Ismerje meg a jogait és lehetőségeit, közérthető módon!'
   });
 
   head.meta.push({
-    name: 'description',
-    content:
-      'Az ittas vezetés miatt indult büntetőeljárás kimenetele számtalan körülménytől függhet 2021-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is. Ismerje meg ezeket!'
+    key: 'og:type',
+    name: 'og:type',
+    content: 'website'
   });
 
   head.meta.push({
+    key: 'description',
+    name: 'description',
+    content:
+      'Az ittas vezetés miatt indult büntetőeljárás kimenetele számtalan körülménytől függ 2022-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is.'
+  });
+
+  head.meta.push({
+    key: 'og:image',
     name: 'og:image',
     content: '/ittasvezetessocial.jpg'
   });
 
   head.meta.push({
+    key: 'og:url',
     name: 'og:url',
     content: 'https://ittasvezetes.drkakukzoltan.hu'
+  });
+
+  head.meta.push({
+    key: 'og:locale',
+    name: 'og:locale',
+    content: 'hu_HU'
   });
 
   head.meta.push({

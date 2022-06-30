@@ -10,11 +10,18 @@
         rel="noopener"
       >
         <div class="image">
+          <g-image
+            src="~/assets/images/logo_vezesshu.svg"
+            alt="vezess.hu logo"
+          />
+        </div>
+        <div class="image">
           <g-image src="~/assets/images/logo_rtl.png" alt="rtl klub logo" />
         </div>
         <div class="image">
           <g-image src="~/assets/images/logo_tv2.png" alt="tv2 logo" />
         </div>
+
         <div class="image">
           <g-image src="~/assets/images/logo_24hu.png" alt="24.hu logo" />
         </div>
@@ -30,16 +37,16 @@
 </template>
 <script>
 export default {
-  name: "Media",
+  name: 'Media',
 
   data() {
     return {
       logos: [
-        "logo_rtl.png",
-        "logo_tv2.png",
-        "logo_24.png",
-        "logo_hvg.png",
-        "logo_blikk.png"
+        'logo_rtl.png',
+        'logo_tv2.png',
+        'logo_24.png',
+        'logo_hvg.png',
+        'logo_blikk.png'
       ]
     };
   }

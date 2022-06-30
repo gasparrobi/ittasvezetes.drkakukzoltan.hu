@@ -6,7 +6,7 @@
           <h2 class="title">Miért válasszon engem?</h2>
           <p>
             Több mint 8 év gyakorlati tapasztalattal rendelkezem ittas vezetés
-            miatt indult büntetőügyekben, így Ügyfélként - ismerve 2021. évében
+            miatt indult büntetőügyekben, így Ügyfélként - ismerve 2022. évében
             is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető
             tájékoztatást kaphat valamennyi felmerülő kérdésére. Az
             ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi
@@ -23,14 +23,14 @@
           <p>Dr. Kakuk Zoltán Dániel</p>
           <img
             class="person"
-            src="~../assets/images/drkakukzoltan.jpg"
+            src="~../assets/images/drkakukzoltan.webp"
             alt="Dr. Kakuk Zoltán Dániel - ittas vezetés ügyvéd"
           />
         </div>
       </div>
     </div>
 
-    <div class="section section-red">
+    <!-- <div class="section section-red">
       <div class="section-inner">
         <div class="cta-wrapper">
           <h2 class="cta-title">
@@ -41,7 +41,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

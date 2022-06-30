@@ -10,7 +10,7 @@ $breakpoints: (
   mobile-s: 320
 );
 
-@mixin break ($breakpoint) {
+@mixin break($breakpoint) {
   $size: map-get($breakpoints, $breakpoint);
   $size-in-pixel: $size * 1px;
   @media (max-width: $size-in-pixel) {
@@ -18,20 +18,19 @@ $breakpoints: (
   }
 }
 
-.content p li {
+.content .content-inner li {
   position: relative;
   margin: 14px 0;
   padding-left: 20px;
 
   &:before {
     position: absolute;
-    content: " ";
+    content: ' ';
     width: 10px;
     height: 10px;
-    border: 3px solid #C54552;;
+    border: 3px solid #c54552;
     border-radius: 50%;
     left: 2px;
     top: 5px;
   }
 }
-

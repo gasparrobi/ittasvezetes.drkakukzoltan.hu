@@ -1,13 +1,13 @@
 <template>
   <section id="elerhetosegeim" data-observe="observe" class="section">
     <div class="section-inner">
-      <h1 class="title">Elérhetőségeim</h1>
+      <h2 class="title">Elérhetőségeim</h2>
       <div class="contact-wrapper">
         <div class="box">
           <h2 class="description">Iroda cím</h2>
           <address class="content">
             <p>1055 Budapest</p>
-            <p>Szent István körút 17.</p> 
+            <p>Szent István körút 17.</p>
             <p>3. emelet 4. ajtó (kapucsengő: 58)</p>
           </address>
         </div>
@@ -17,16 +17,19 @@
         </div>
         <div class="box">
           <h2 class="description">Írjon email-t</h2>
-          <p><a href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm">iroda@drkakukzoltan.hu</a></p>
+          <p>
+            <a
+              href="mailto:iroda@drkakukzoltan.hu?subject=Ittas vezetés ügyben érdeklődöm"
+              >iroda@drkakukzoltan.hu</a
+            >
+          </p>
         </div>
       </div>
     </div>
-  </section>  
+  </section>
 </template>
 <script>
-export default {
-  
-}
+export default {};
 </script>
 <style lang="scss" scoped>
 .section {
@@ -61,14 +64,14 @@ export default {
   border: 5px solid;
   background: #fff;
   border: 5px solid #949494;
-  box-shadow: 0px 15px 22px 2px rgba(0,0,0,.1);
+  box-shadow: 0px 15px 22px 2px rgba(0, 0, 0, 0.1);
 
   @include break(phablet) {
     min-height: 60px;
   }
 
   h2 {
-    color: #2C3E50;
+    color: #2c3e50;
     text-transform: uppercase;
     font-size: 16px;
   }
