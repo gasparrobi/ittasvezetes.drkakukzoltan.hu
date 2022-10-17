@@ -262,10 +262,11 @@ export default {
       this.isLoading = true;
       const [error, response] = await to(
         axios.post(
-          'https://script.google.com/a/drkakukzoltan.hu/macros/s/AKfycbxJ_zOuqa8ZpPYszmqrjVXvgAWJcfX5-L5gzMdl/exec',
+          'https://script.google.com/macros/s/AKfycbwOMc5YM2W_9CcO73rAnlIydy80uwPwvTdsWE6HGmEp9bKOYbtlK32MU-yDLEu4eDWyqg/exec',
           params
         )
       );
+
       this.isLoading = false;
 
       this.formData = this.defaultData();
