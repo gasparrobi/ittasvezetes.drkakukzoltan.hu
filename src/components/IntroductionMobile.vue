@@ -5,8 +5,8 @@
         <div class="intro">
           <h2 class="title">Miért válasszon engem?</h2>
           <p>
-            Több mint 8 év gyakorlati tapasztalattal rendelkezem ittas vezetés
-            miatt indult büntetőügyekben, így Ügyfélként - ismerve 2022. évében
+            Több mint 10 év gyakorlati tapasztalattal rendelkezem ittas vezetés
+            miatt indult büntetőügyekben, így Ügyfélként - ismerve 2024. évében
             is a bírói gyakorlatot - Ön őszinte, naprakész, közérthető
             tájékoztatást kaphat valamennyi felmerülő kérdésére. Az
             ügyfélközpontúság jegyében Ügyfeleim részére olyan jogi
