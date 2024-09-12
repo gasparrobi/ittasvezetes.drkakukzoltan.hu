@@ -176,7 +176,7 @@ export default {
         key: 'description',
         name: 'description',
         content:
-          'Az elektromos roller ittas vezetése miatt indult büntetőeljárás kimenetele számtalan körülménytől függ 2022-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is.'
+          'Az elektromos roller ittas vezetése miatt indult büntetőeljárás kimenetele számtalan körülménytől függ 2024-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is.'
       },
       {
         key: 'og:title',
