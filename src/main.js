@@ -40,7 +40,7 @@ export default function(Vue, { router, head, isClient }) {
     key: 'og:title',
     name: 'og:title',
     content:
-      'Mire számíthatok 2022-ben ittas vezetés esetén? - dr. Kakuk Zoltán Dániel, ügyvéd'
+      'Mire számíthatok 2024-ben ittas vezetés esetén? - dr. Kakuk Zoltán Dániel, ügyvéd'
   });
 
   head.meta.push({
@@ -60,7 +60,7 @@ export default function(Vue, { router, head, isClient }) {
     key: 'description',
     name: 'description',
     content:
-      'Az ittas vezetés miatt indult büntetőeljárás kimenetele számtalan körülménytől függ 2022-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is.'
+      'Az ittas vezetés miatt indult büntetőeljárás kimenetele számtalan körülménytől függ 2024-ben. Ugyanez vonatkozik az ittas vezetés miatt kiszabható büntetésekre is.'
   });
 
   head.meta.push({
